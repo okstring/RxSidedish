@@ -7,13 +7,14 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-
+class MainViewController: UIViewController, ViewModelBindableType {
+    var viewModel: MainViewModel!
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
     }
-
-
+    
+    func bindViewModel() {
+        
+    }
 }
-
