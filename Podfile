@@ -12,5 +12,5 @@ target 'RxSidedish' do
   pod 'NSObject+Rx'
   pod 'RxDataSources'
   pod 'RxCoreData'
-
+  pod 'Alamofire'
 end
