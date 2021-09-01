@@ -119,6 +119,8 @@
 		223F3F9626DE6FFE005AFBB0 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				22BF2B0D26DD13AF009A8B51 /* Main.storyboard */,
+				22BF2B1226DD13B2009A8B51 /* LaunchScreen.storyboard */,
 				22BF2B0B26DD13AF009A8B51 /* MainViewController.swift */,
 				223F3F9A26DE7281005AFBB0 /* DetailViewController.swift */,
 				223F3F9726DE701A005AFBB0 /* ViewModelBindableType.swift */,
@@ -165,9 +167,7 @@
 				223F3F7C26DDF211005AFBB0 /* extension */,
 				221E9B1526DDCD7300FCF81C /* Entity */,
 				22BF2B2726DD18FF009A8B51 /* Network */,
-				22BF2B0D26DD13AF009A8B51 /* Main.storyboard */,
 				22BF2B1026DD13B2009A8B51 /* Assets.xcassets */,
-				22BF2B1226DD13B2009A8B51 /* LaunchScreen.storyboard */,
 				22BF2B1526DD13B2009A8B51 /* Info.plist */,
 			);
 			path = RxSidedish;

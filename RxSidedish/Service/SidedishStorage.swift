@@ -9,7 +9,9 @@ import Foundation
 import RxSwift
 
 class SidedishStorage: SidedishStorageType {
+    
     private var sidedishes = [[SidedishItem]]()
+    
     private var currentSidedish = SidedishItem.EMPTY
     
     private lazy var sections: [SidedishSectionModel] = [
@@ -22,7 +24,9 @@ class SidedishStorage: SidedishStorageType {
     
     func allUpdateSidedish(of category: SidedishCategory, newSidedishes: [SidedishItem]) -> Observable<([SidedishItem], SidedishCategory)> {
         sidedishes[category.index] = newSidedishes
+        
         store.onNext(sidedishes)
+        
         return Observable.just((newSidedishes, category))
     }
 }
