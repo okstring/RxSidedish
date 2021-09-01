@@ -6,6 +6,12 @@
 //
 
 import Foundation
+import RxSwift
+import RxCocoa
+import Action
+import RxDataSources
+
+typealias SidedishSectionModel = AnimatableSectionModel<Int, SidedishItem>
 
 class MainViewModel {
     
