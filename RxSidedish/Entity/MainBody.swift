@@ -8,7 +8,7 @@
 import Foundation
 
 struct MainBody: Codable {
-    let mainItems: [MainItem]
+    let mainItems: [SidedishItem]
     
     enum CodingKeys: String, CodingKey {
         case mainItems = "body"

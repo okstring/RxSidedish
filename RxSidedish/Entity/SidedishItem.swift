@@ -6,8 +6,9 @@
 //
 
 import Foundation
+import RxDataSources
 
-struct MainItem: Codable {
+struct SidedishItem: Codable, Equatable, IdentifiableType {
     let detailHash: String
     let imageURL: String
     let alt: String
@@ -17,6 +18,9 @@ struct MainItem: Codable {
     var nPrice: String = ""
     let sPrice: String
     var badge: [String] = [String]()
+    var identity: String {
+        return detailHash
+    }
     
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
@@ -31,6 +35,19 @@ struct MainItem: Codable {
         self.badge = try container.decodeIfPresent([String].self, forKey: .badge) ?? [String]()
     }
     
+    init(detailHash: String, imageURL: String, alt: String, deliveryType: [String] = [String](), title: String, itemDescription: String, nPrice: String = "", sPrice: String, badge: [String] = [String]()) {
+        self.detailHash = detailHash
+        self.imageURL = imageURL
+        self.alt = alt
+        self.deliveryType = deliveryType
+        self.title = title
+        self.itemDescription = itemDescription
+        self.nPrice = nPrice
+        self.sPrice = sPrice
+        self.badge = badge
+    }
+
+    
     enum CodingKeys: String, CodingKey {
         case alt, title, badge
         case detailHash = "detail_hash"
@@ -40,4 +57,8 @@ struct MainItem: Codable {
         case nPrice = "n_price"
         case sPrice = "s_price"
     }
+}
+
+extension SidedishItem {
+    static var EMPTY = SidedishItem(detailHash: "", imageURL: "", alt: "", title: "", itemDescription: "", sPrice: "")
 }

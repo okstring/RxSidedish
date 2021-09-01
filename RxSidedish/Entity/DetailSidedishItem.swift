@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct DetailItem: Decodable {
+struct DetailSidedishItem: Decodable {
     let topImageURL: String
     let thumbImagesURL: [String]
     let productDescription: String
