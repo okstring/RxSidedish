@@ -24,5 +24,5 @@ enum SidedishCategory {
 
 protocol SidedishStorageType {
     @discardableResult
-    func allUpdateSidedish(of category: SidedishCategory, newSidedishes: [SidedishItem]) -> Observable<([SidedishItem], SidedishCategory)>
+    func allUpdateSidedish(of category: SidedishCategory, newSidedishes: [SidedishItem]) -> Observable<([[SidedishItem]])>
 }
