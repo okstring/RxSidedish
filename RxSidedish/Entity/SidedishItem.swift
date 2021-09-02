@@ -21,6 +21,12 @@ struct SidedishItem: Codable, Equatable, IdentifiableType {
     var identity: String {
         return detailHash
     }
+    var hasEventBadge: Bool {
+        return badge.contains("이벤트특가")
+    }
+    var hasLaunchingBadge: Bool {
+        return badge.contains("런칭특가")
+    }
     
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)

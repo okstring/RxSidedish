@@ -13,6 +13,20 @@ import RxDataSources
 
 typealias SidedishSectionModel = AnimatableSectionModel<Int, SidedishItem>
 
-class MainViewModel {
+class MainViewModel: CommonViewModel {
+    let dataSource: RxTableViewSectionedAnimatedDataSource<SidedishSectionModel> = {
+        let ds = RxTableViewSectionedAnimatedDataSource<SidedishSectionModel> { (dataSource, tableView, indexPath, sidedishItem) -> UITableViewCell in
+            
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: MainTableViewCell.className) as? MainTableViewCell else {
+                return UITableViewCell()
+            }
+            
+            cell.configure(item: sidedishItem)
+            return cell
+        }
+        
+        return ds
+    }()
+    
     
 }

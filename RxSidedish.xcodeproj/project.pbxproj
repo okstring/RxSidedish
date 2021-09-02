@@ -10,6 +10,9 @@
 		220E095E26DD1A30003C72AE /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220E095D26DD1A30003C72AE /* NetworkManager.swift */; };
 		221E9B1726DDCEA200FCF81C /* SidedishItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221E9B1626DDCEA200FCF81C /* SidedishItem.swift */; };
 		221E9B2526DDD77A00FCF81C /* MainBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221E9B2426DDD77A00FCF81C /* MainBody.swift */; };
+		222E078B26E0C1F000F53227 /* CommonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222E078A26E0C1F000F53227 /* CommonViewModel.swift */; };
+		222E079026E0C43B00F53227 /* MainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222E078F26E0C43B00F53227 /* MainTableViewCell.swift */; };
+		222E079326E0C90300F53227 /* NSObject+ClassNameProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222E079226E0C90300F53227 /* NSObject+ClassNameProtocol.swift */; };
 		223F3F7326DDE5EE005AFBB0 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223F3F7226DDE5EE005AFBB0 /* NetworkError.swift */; };
 		223F3F7626DDE60B005AFBB0 /* ServerAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223F3F7526DDE60B005AFBB0 /* ServerAPI.swift */; };
 		223F3F7926DDE668005AFBB0 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223F3F7826DDE668005AFBB0 /* ImageLoader.swift */; };
@@ -38,6 +41,9 @@
 		220E095D26DD1A30003C72AE /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		221E9B1626DDCEA200FCF81C /* SidedishItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidedishItem.swift; sourceTree = "<group>"; };
 		221E9B2426DDD77A00FCF81C /* MainBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainBody.swift; sourceTree = "<group>"; };
+		222E078A26E0C1F000F53227 /* CommonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonViewModel.swift; sourceTree = "<group>"; };
+		222E078F26E0C43B00F53227 /* MainTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewCell.swift; sourceTree = "<group>"; };
+		222E079226E0C90300F53227 /* NSObject+ClassNameProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+ClassNameProtocol.swift"; sourceTree = "<group>"; };
 		223F3F7226DDE5EE005AFBB0 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		223F3F7526DDE60B005AFBB0 /* ServerAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerAPI.swift; sourceTree = "<group>"; };
 		223F3F7826DDE668005AFBB0 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
@@ -88,10 +94,19 @@
 			path = Entity;
 			sourceTree = "<group>";
 		};
+		222E078E26E0C40900F53227 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				222E078F26E0C43B00F53227 /* MainTableViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		223F3F7C26DDF211005AFBB0 /* extension */ = {
 			isa = PBXGroup;
 			children = (
 				223F3F7D26DDF224005AFBB0 /* UIImage+UIGraphicsImageREnderer.swift */,
+				222E079226E0C90300F53227 /* NSObject+ClassNameProtocol.swift */,
 			);
 			path = extension;
 			sourceTree = "<group>";
@@ -112,6 +127,7 @@
 			children = (
 				223F3F8C26DE0023005AFBB0 /* MainViewModel.swift */,
 				223F3F8F26DE002B005AFBB0 /* DetailViewModel.swift */,
+				222E078A26E0C1F000F53227 /* CommonViewModel.swift */,
 			);
 			name = ViewModel;
 			sourceTree = "<group>";
@@ -161,6 +177,7 @@
 				22BF2B0726DD13AF009A8B51 /* AppDelegate.swift */,
 				22BF2B0926DD13AF009A8B51 /* SceneDelegate.swift */,
 				229E7E1826DE8BD50091BE43 /* Service */,
+				222E078E26E0C40900F53227 /* View */,
 				223F3F9626DE6FFE005AFBB0 /* ViewController */,
 				223F3F8426DDFDEE005AFBB0 /* Scene */,
 				223F3F8B26DE0009005AFBB0 /* ViewModel */,
@@ -322,6 +339,8 @@
 				223F3F8126DDF3DF005AFBB0 /* DetailSidedishItem.swift in Sources */,
 				223F3F8926DDFFAF005AFBB0 /* Scene.swift in Sources */,
 				22DB2C7E26DF0F4800E81B40 /* SidedishStorage.swift in Sources */,
+				222E079026E0C43B00F53227 /* MainTableViewCell.swift in Sources */,
+				222E078B26E0C1F000F53227 /* CommonViewModel.swift in Sources */,
 				223F3F9826DE701A005AFBB0 /* ViewModelBindableType.swift in Sources */,
 				22F2E60826DE745400152FFA /* SceneCoordinator.swift in Sources */,
 				22BF2B0C26DD13AF009A8B51 /* MainViewController.swift in Sources */,
@@ -335,6 +354,7 @@
 				220E095E26DD1A30003C72AE /* NetworkManager.swift in Sources */,
 				22BF2B0A26DD13AF009A8B51 /* SceneDelegate.swift in Sources */,
 				223F3F9026DE002B005AFBB0 /* DetailViewModel.swift in Sources */,
+				222E079326E0C90300F53227 /* NSObject+ClassNameProtocol.swift in Sources */,
 				223F3F7E26DDF224005AFBB0 /* UIImage+UIGraphicsImageREnderer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
