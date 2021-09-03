@@ -9,6 +9,10 @@ import Foundation
 import RxSwift
 import Alamofire
 
+protocol Networkable {
+    func get<T: Decodable>(type: T.Type, endpoint: ServerAPI.Endpoint) -> Observable<T>
+}
+
 class NetworkManager {
     func get<T: Decodable>(type: T.Type,
                            endpoint: ServerAPI.Endpoint) -> Observable<T> {

@@ -13,10 +13,12 @@ class CommonViewModel: NSObject {
     let title: Driver<String>
     let sceneCoordinator: SceneCoordinatorType
     let storage: SidedishStorageType
+    let networkManager: Networkable
     
-    init(title: String, sceneCoordinator: SceneCoordinatorType, storage: SidedishStorageType) {
+    init(title: String, sceneCoordinator: SceneCoordinatorType, storage: SidedishStorageType, networkManager: Networkable) {
         self.title = Observable.just(title).asDriver(onErrorJustReturn: "")
         self.sceneCoordinator = sceneCoordinator
         self.storage = storage
+        self.networkManager = networkManager
     }
 }
