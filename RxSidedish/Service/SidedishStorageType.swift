@@ -15,14 +15,17 @@ enum SidedishCategory {
     
     var index: Int {
         switch self {
-        case .main: return 1
-        case .soup: return 2
-        case .side: return 3
+        case .main: return 0
+        case .soup: return 1
+        case .side: return 2
         }
     }
 }
 
 protocol SidedishStorageType {
     @discardableResult
-    func allUpdateSidedish(of category: SidedishCategory, newSidedishes: [SidedishItem]) -> Observable<([[SidedishItem]])>
+    func allUpdateSidedish(newSidedishes: [[SidedishItem]]) -> Observable<([[SidedishItem]])>
+    
+    @discardableResult
+    func sidedishesList() -> Observable<[[SidedishItem]]>
 }

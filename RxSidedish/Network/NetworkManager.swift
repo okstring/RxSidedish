@@ -27,6 +27,7 @@ class NetworkManager: Networkable {
                     switch statusCode {
                     case 200..<300:
                         guard let result = dataResponse.value else {
+                            print(dataResponse.value, dataResponse.data, dataResponse.error)
                             return emitter.onError(NetworkError.noResult)
                         }
                         emitter.onNext(result)

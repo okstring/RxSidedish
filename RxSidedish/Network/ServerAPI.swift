@@ -23,4 +23,8 @@ struct ServerAPI {
             }
         }
     }
+    
+    static var mainCategories: [ServerAPI.Endpoint] {
+        return [.main, .soup, .side]
+    }
 }

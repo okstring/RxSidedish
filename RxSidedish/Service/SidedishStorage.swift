@@ -22,8 +22,12 @@ class SidedishStorage: SidedishStorageType {
     
     private lazy var store = BehaviorSubject<[[SidedishItem]]>(value: sidedishes)
     
-    func allUpdateSidedish(of category: SidedishCategory, newSidedishes: [SidedishItem]) -> Observable<([[SidedishItem]])> {
-        sidedishes[category.index] = newSidedishes
+    func sidedishesList() -> Observable<[[SidedishItem]]> {
+        return store
+    }
+    
+    func allUpdateSidedish(newSidedishes: [[SidedishItem]]) -> Observable<([[SidedishItem]])> {
+        sidedishes = newSidedishes
         
         store.onNext(sidedishes)
         

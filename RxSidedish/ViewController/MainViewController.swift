@@ -11,7 +11,7 @@ class MainViewController: UIViewController, ViewModelBindableType {
     var viewModel: MainViewModel!
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        viewModel.getSidedishes()
     }
     
     func bindViewModel() {

@@ -28,5 +28,20 @@ class MainViewModel: CommonViewModel {
         return ds
     }()
     
+    var memoList: Observable<[[SidedishItem]]> {
+        return storage.sidedishesList()
+    }
+    
+    func getSidedishes() {
+        _ = Observable
+            .zip(
+                ServerAPI.mainCategories.map {
+                    networkManager.get(type: MainBody.self, endpoint: $0)
+            })
+            .map({ $0.map{ $0.mainItems } })
+            .subscribe(onNext: { [weak self] in
+                self?.storage.allUpdateSidedish(newSidedishes: $0)
+            })
+    }
     
 }
