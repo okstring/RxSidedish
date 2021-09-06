@@ -37,9 +37,9 @@ struct SidedishItem: Codable, Equatable, IdentifiableType {
         self.title = try container.decode(String.self, forKey: .title)
         self.itemDescription = try container.decode(String.self, forKey: .itemDescription)
         if let nPrice = try container.decodeIfPresent(String.self, forKey: .nPrice) {
-            self.nPrice = "\(nPrice)원"
+            self.nPrice = nPrice
         }
-        self.sPrice = try "\(container.decode(String.self, forKey: .sPrice))원"
+        self.sPrice = try container.decode(String.self, forKey: .sPrice)
         self.badge = try container.decodeIfPresent([String].self, forKey: .badge) ?? [String]()
     }
     
