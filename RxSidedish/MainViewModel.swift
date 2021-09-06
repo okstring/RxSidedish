@@ -13,6 +13,7 @@ import RxDataSources
 
 struct MainSection {
     var header: String
+    var category: String
     var items: [SidedishItem]
 }
 
@@ -39,17 +40,12 @@ class MainViewModel: CommonViewModel {
             return cell
         }
         
-        ds.titleForHeaderInSection = { dataSource, index in
-            return dataSource.sectionModels[index].header
-        }
-        
         return ds
     }()
     
-    var memoList: Observable<[MainSection]> {
+    var mainSections: Observable<[MainSection]> {
         return storage.sidedishesList()
     }
-    
     
     //viewController와 연결해야함
     func getSidedishes() {
@@ -63,5 +59,4 @@ class MainViewModel: CommonViewModel {
                 self?.storage.allUpdateSidedish(newSidedishes: $0)
             })
     }
-    
 }

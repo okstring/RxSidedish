@@ -15,13 +15,13 @@ class SidedishStorage: SidedishStorageType {
                               [SidedishItem.EMPTY(dummyID: "B")],
                               [SidedishItem.EMPTY(dummyID: "C")]]
     
-    private var currentSidedish = SidedishItem.EMPTY
+    private var currentSidedish = SidedishItem.EMPTY(dummyID: "Z")
     
     private var sections: [MainSection] {
         return [
-            MainSection(header: "안녕하세요 첫번째 섹션", items: sidedishes[0]),
-            MainSection(header: "안녕하세요 두번째 섹션", items: sidedishes[1]),
-            MainSection(header: "안녕하세요 알쥬?", items: sidedishes[2])
+            MainSection(header: "모두가 좋아하는 든든한 메인요리", category: "메인요리", items: sidedishes[0]),
+            MainSection(header: "정성이 담긴 뜨끈뜨끈 국물요리", category: "국물요리", items: sidedishes[1]),
+            MainSection(header: "식탁을 풍성하게 하는 정갈한 밑반찬", category: "밑반찬", items: sidedishes[2])
         ]
     }
     
