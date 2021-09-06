@@ -12,7 +12,11 @@ import RxCocoa
 
 class MainViewController: UIViewController, ViewModelBindableType {
     @IBOutlet weak var mainTableView: UITableView!
+    
     var viewModel: MainViewModel!
+    
+    lazy var delegate = MainTableViewDelegate(viewModel: viewModel)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureTableView()
@@ -30,27 +34,11 @@ class MainViewController: UIViewController, ViewModelBindableType {
     }
     
     func bindViewModel() {
-        mainTableView.rx.setDelegate(self)
+        mainTableView.rx.setDelegate(delegate)
             .disposed(by: rx.disposeBag)
         
         viewModel.mainSections
             .bind(to: mainTableView.rx.items(dataSource: viewModel.dataSource))
             .disposed(by: rx.disposeBag)
-    }
-}
-
-extension MainViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        guard let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: MainTableViewHeaderView.className) as? MainTableViewHeaderView else { return UIView() }
-        view.configure(sectionModel: viewModel.dataSource.sectionModels[section])
-        return view
-    }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 100
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 130
     }
 }
