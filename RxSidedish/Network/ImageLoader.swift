@@ -10,14 +10,15 @@ import Alamofire
 
 final class ImageLoader {
     static private let cacheURL = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)[0]
-    static func load(from imageUrl: String, completionHandler: @escaping (UIImage?) -> ()) {
-        guard let fileName = URL(string: imageUrl)?.lastPathComponent else { return }
+    static func load(from imageUrl: String, completionHandler: @escaping (UIImage?) -> ()) -> DownloadRequest? {
+        guard let fileName = URL(string: imageUrl)?.lastPathComponent else { return nil }
 
         if let cache = availableCache(of: fileName) {
             let image = UIImage(contentsOfFile: cache)
 
             DispatchQueue.main.async {
-                return completionHandler(image)
+                completionHandler(image)
+                return
             }
         }
 
@@ -27,10 +28,11 @@ final class ImageLoader {
                 let image = UIImage(contentsOfFile: filePath)
 
                 DispatchQueue.main.async {
-                    return completionHandler(image)
+                    completionHandler(image)
                 }
             }
         }
+        return request
     }
     
     static private func availableCache(of fileName: String) -> String? {

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class MainTableViewCell: UITableViewCell {
     @IBOutlet weak var sidedishTitle: UILabel!
@@ -15,6 +16,7 @@ class MainTableViewCell: UITableViewCell {
     @IBOutlet weak var sPrice: UILabel!
     @IBOutlet weak var eventBadge: RoundBadgeLabel!
     @IBOutlet weak var launchingBadge: RoundBadgeLabel!
+    var downloadRequest: DownloadRequest?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -23,6 +25,7 @@ class MainTableViewCell: UITableViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
+        downloadRequest?.cancel()
         sidedishImageView.image = nil
         eventBadge.isHidden = false
         launchingBadge.isHidden = false
@@ -46,7 +49,7 @@ class MainTableViewCell: UITableViewCell {
         sPrice.text = item.sPrice
         eventBadge.isHidden = !item.hasEventBadge
         launchingBadge.isHidden = !item.hasLaunchingBadge
-        ImageLoader.load(from: item.imageURL, completionHandler: { [weak self] (image) in
+        downloadRequest = ImageLoader.load(from: item.imageURL, completionHandler: { [weak self] (image) in
             self?.sidedishImageView.image = image?.resize(newWidth: self?.sidedishImageView.bounds.width ?? 130)
         })
     }
