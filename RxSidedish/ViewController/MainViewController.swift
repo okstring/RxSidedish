@@ -33,7 +33,6 @@ class MainViewController: UIViewController, ViewModelBindableType {
             .disposed(by: rx.disposeBag)
         
         viewModel.getSidedishes()
-            .take(1)
             .subscribe{ _ in }
             .disposed(by: rx.disposeBag)
         
