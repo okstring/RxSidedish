@@ -32,7 +32,6 @@
                                                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <color key="tintColor" systemColor="systemBackgroundColor"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="130" id="kRY-a6-2ZL"/>
                                                         <constraint firstAttribute="width" secondItem="SzI-a2-AuY" secondAttribute="height" id="w3H-uJ-tPL"/>
                                                     </constraints>
                                                     <userDefinedRuntimeAttributes>
@@ -40,7 +39,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </imageView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="PMS-O7-YKs">
-                                                    <rect key="frame" x="154" y="18.5" width="244" height="93.5"/>
+                                                    <rect key="frame" x="154" y="20" width="244" height="90.5"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="제목" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="keU-FS-jYy">
                                                             <rect key="frame" x="0.0" y="0.0" width="28" height="19.5"/>
@@ -78,29 +77,35 @@
                                                             </subviews>
                                                         </stackView>
                                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="CmY-8N-fKD">
-                                                            <rect key="frame" x="0.0" y="68.5" width="137" height="25"/>
+                                                            <rect key="frame" x="0.0" y="68.5" width="134" height="22"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이벤트특가" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="acn-nh-DvD">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="72" height="25"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이벤트특가" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="acn-nh-DvD" customClass="RoundBadgeLabel" customModule="RxSidedish" customModuleProvider="target">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="70" height="22"/>
                                                                     <color key="backgroundColor" systemColor="systemGrayColor"/>
                                                                     <constraints>
-                                                                        <constraint firstAttribute="width" constant="72" id="26X-ka-5X8"/>
-                                                                        <constraint firstAttribute="height" constant="25" id="hVb-2I-fZv"/>
+                                                                        <constraint firstAttribute="width" constant="70" id="26X-ka-5X8"/>
+                                                                        <constraint firstAttribute="height" constant="22" id="hVb-2I-fZv"/>
                                                                     </constraints>
-                                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
+                                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <nil key="highlightedColor"/>
+                                                                    <userDefinedRuntimeAttributes>
+                                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="cornerRadius" value="YES"/>
+                                                                    </userDefinedRuntimeAttributes>
                                                                 </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="런칭특가" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MWH-EP-6e7">
-                                                                    <rect key="frame" x="76" y="0.0" width="61" height="25"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="런칭특가" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MWH-EP-6e7" customClass="RoundBadgeLabel" customModule="RxSidedish" customModuleProvider="target">
+                                                                    <rect key="frame" x="74" y="0.0" width="60" height="22"/>
                                                                     <color key="backgroundColor" systemColor="systemGrayColor"/>
                                                                     <constraints>
-                                                                        <constraint firstAttribute="width" constant="61" id="Ogh-4B-Hbd"/>
-                                                                        <constraint firstAttribute="height" constant="25" id="ggs-JO-8M0"/>
+                                                                        <constraint firstAttribute="width" constant="60" id="Ogh-4B-Hbd"/>
+                                                                        <constraint firstAttribute="height" constant="22" id="ggs-JO-8M0"/>
                                                                     </constraints>
-                                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
+                                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <nil key="highlightedColor"/>
+                                                                    <userDefinedRuntimeAttributes>
+                                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="cornerRadius" value="YES"/>
+                                                                    </userDefinedRuntimeAttributes>
                                                                 </label>
                                                             </subviews>
                                                         </stackView>
@@ -168,8 +173,14 @@
         </scene>
     </scenes>
     <designables>
+        <designable name="MWH-EP-6e7">
+            <size key="intrinsicContentSize" width="42" height="14.5"/>
+        </designable>
         <designable name="SzI-a2-AuY">
             <size key="intrinsicContentSize" width="22" height="20"/>
+        </designable>
+        <designable name="acn-nh-DvD">
+            <size key="intrinsicContentSize" width="52" height="14.5"/>
         </designable>
     </designables>
     <resources>
