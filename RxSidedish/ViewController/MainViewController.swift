@@ -9,6 +9,7 @@ import UIKit
 import NSObject_Rx
 import RxSwift
 import RxCocoa
+import RxViewController
 
 class MainViewController: UIViewController, ViewModelBindableType {
     @IBOutlet weak var mainTableView: UITableView!
@@ -20,20 +21,22 @@ class MainViewController: UIViewController, ViewModelBindableType {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureTableView()
-        
-        viewModel.getSidedishes()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.navigationController?.setNavigationBarHidden(true, animated: false)
-    }
-
     private func configureTableView() {
         mainTableView.register(MainTableViewHeaderView.self, forHeaderFooterViewReuseIdentifier: MainTableViewHeaderView.className)
     }
     
     func bindViewModel() {
+        rx.viewWillAppear
+            .bind(to: navigationController!.rx.isNavigationBarHidden)
+            .disposed(by: rx.disposeBag)
+        
+        viewModel.getSidedishes()
+            .take(1)
+            .subscribe{ _ in }
+            .disposed(by: rx.disposeBag)
+        
         mainTableView.rx.setDelegate(delegate)
             .disposed(by: rx.disposeBag)
         

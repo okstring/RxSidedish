@@ -10,7 +10,7 @@ import RxSwift
 
 protocol SidedishStorageType {
     @discardableResult
-    func allUpdateSidedish(newSidedishes: [[SidedishItem]]) -> Observable<([[SidedishItem]])>
+    func allUpdateSidedish(_ newSidedishes: [[SidedishItem]]) -> Observable<[MainSection]>
     
     @discardableResult
     func sidedishesList() -> Observable<[MainSection]>

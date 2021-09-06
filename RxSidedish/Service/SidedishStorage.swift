@@ -31,11 +31,11 @@ class SidedishStorage: SidedishStorageType {
         return subject.asObservable()
     }
     
-    func allUpdateSidedish(newSidedishes: [[SidedishItem]]) -> Observable<([[SidedishItem]])> {
+    func allUpdateSidedish(_ newSidedishes: [[SidedishItem]]) -> Observable<[MainSection]> {
         sidedishes = newSidedishes
         
         subject.accept(sections)
         
-        return Observable.just(sidedishes)
+        return Observable.just(sections)
     }
 }

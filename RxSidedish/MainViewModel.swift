@@ -7,8 +7,6 @@
 
 import Foundation
 import RxSwift
-import RxCocoa
-import Action
 import RxDataSources
 
 struct MainSection {
@@ -21,7 +19,7 @@ extension MainSection: AnimatableSectionModelType {
     var identity: String {
         return header
     }
-
+    
     init(original: MainSection, items: [SidedishItem]) {
         self = original
         self.items = items
@@ -29,6 +27,8 @@ extension MainSection: AnimatableSectionModelType {
 }
 
 class MainViewModel: CommonViewModel {
+    let disposeBag = DisposeBag()
+    
     let dataSource: RxTableViewSectionedAnimatedDataSource<MainSection> = {
         let ds = RxTableViewSectionedAnimatedDataSource<MainSection> { (dataSource, tableView, indexPath, sidedishItem) -> UITableViewCell in
             
@@ -47,16 +47,14 @@ class MainViewModel: CommonViewModel {
         return storage.sidedishesList()
     }
     
-    //viewController와 연결해야함
-    func getSidedishes() {
-        _ = Observable
-            .zip(
-                ServerAPI.mainCategories.map {
-                    networkManager.get(type: MainBody.self, endpoint: $0)
+    
+    func getSidedishes() -> Observable<[MainSection]> {
+        Observable.zip(
+            ServerAPI.mainCategories.map {
+                networkManager.get(type: MainBody.self, endpoint: $0)
             })
             .map({ $0.map{ $0.mainItems } })
-            .subscribe(onNext: { [weak self] in
-                self?.storage.allUpdateSidedish(newSidedishes: $0)
-            })
+            .flatMap(storage.allUpdateSidedish)
+            .asObservable()
     }
 }
