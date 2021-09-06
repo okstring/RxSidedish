@@ -28,6 +28,11 @@ class MainTableViewCell: UITableViewCell {
         launchingBadge.isHidden = false
     }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 8, left: 0, bottom: 8, right: 0))
+    }
+    
     private func setView() {
         for view in [eventBadge, launchingBadge] {
             view?.layer.cornerRadius = view!.frame.width / 17
