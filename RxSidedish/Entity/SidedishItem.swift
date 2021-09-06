@@ -36,8 +36,10 @@ struct SidedishItem: Codable, Equatable, IdentifiableType {
         self.deliveryType = try container.decodeIfPresent([String].self, forKey: .deliveryType) ?? [String]()
         self.title = try container.decode(String.self, forKey: .title)
         self.itemDescription = try container.decode(String.self, forKey: .itemDescription)
-        self.nPrice = try container.decodeIfPresent(String.self, forKey: .nPrice) ?? ""
-        self.sPrice = try container.decode(String.self, forKey: .sPrice)
+        if let nPrice = try container.decodeIfPresent(String.self, forKey: .nPrice) {
+            self.nPrice = "\(nPrice)원"
+        }
+        self.sPrice = try "\(container.decode(String.self, forKey: .sPrice))원"
         self.badge = try container.decodeIfPresent([String].self, forKey: .badge) ?? [String]()
     }
     
