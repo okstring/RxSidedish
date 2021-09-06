@@ -30,7 +30,7 @@ class MainTableViewCell: UITableViewCell {
     
     private func setView() {
         for view in [eventBadge, launchingBadge] {
-            view?.layer.cornerRadius = view!.frame.width / 20
+            view?.layer.cornerRadius = view!.frame.width / 17
             view?.layer.masksToBounds = true
         }
     }
@@ -39,7 +39,7 @@ class MainTableViewCell: UITableViewCell {
         sidedishTitle.text = item.title
         sidedishDescription.text = item.itemDescription
         nPrice.text = item.nPrice
-        sPrice.text = "\(item.sPrice)원"
+        sPrice.text = item.sPrice
         eventBadge.isHidden = !item.hasEventBadge
         launchingBadge.isHidden = !item.hasLaunchingBadge
         ImageLoader.load(from: item.imageURL, completionHandler: { [weak self] (image) in
