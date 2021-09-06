@@ -66,5 +66,7 @@ struct SidedishItem: Codable, Equatable, IdentifiableType {
 }
 
 extension SidedishItem {
-    static var EMPTY = SidedishItem(detailHash: "", imageURL: "", alt: "", title: "", itemDescription: "", sPrice: "")
+    static func EMPTY(dummyID: String) -> SidedishItem {
+        return SidedishItem(detailHash: dummyID, imageURL: "", alt: "", title: "", itemDescription: "", sPrice: "")
+    }
 }

@@ -7,29 +7,34 @@
 
 import Foundation
 import RxSwift
+import RxCocoa
 
 class SidedishStorage: SidedishStorageType {
     
-    private var sidedishes = [[SidedishItem]]()
+    private var sidedishes = [[SidedishItem.EMPTY(dummyID: "A")],
+                              [SidedishItem.EMPTY(dummyID: "B")],
+                              [SidedishItem.EMPTY(dummyID: "C")]]
     
     private var currentSidedish = SidedishItem.EMPTY
     
-    private lazy var sections: [SidedishSectionModel] = [
-        SidedishSectionModel(model: 0, items: sidedishes[0]),
-        SidedishSectionModel(model: 1, items: sidedishes[1]),
-        SidedishSectionModel(model: 2, items: sidedishes[2])
-    ]
+    private var sections: [MainSection] {
+        return [
+            MainSection(header: "안녕하세요 첫번째 섹션", items: sidedishes[0]),
+            MainSection(header: "안녕하세요 두번째 섹션", items: sidedishes[1]),
+            MainSection(header: "안녕하세요 알쥬?", items: sidedishes[2])
+        ]
+    }
     
-    private lazy var store = BehaviorSubject<[[SidedishItem]]>(value: sidedishes)
+    private lazy var subject = BehaviorRelay<[MainSection]>(value: sections)
     
-    func sidedishesList() -> Observable<[[SidedishItem]]> {
-        return store
+    func sidedishesList() -> Observable<[MainSection]> {
+        return subject.asObservable()
     }
     
     func allUpdateSidedish(newSidedishes: [[SidedishItem]]) -> Observable<([[SidedishItem]])> {
         sidedishes = newSidedishes
         
-        store.onNext(sidedishes)
+        subject.accept(sections)
         
         return Observable.just(sidedishes)
     }

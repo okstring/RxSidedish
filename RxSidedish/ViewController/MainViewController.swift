@@ -6,8 +6,12 @@
 //
 
 import UIKit
+import NSObject_Rx
+import RxSwift
+import RxCocoa
 
 class MainViewController: UIViewController, ViewModelBindableType {
+    @IBOutlet weak var mainTableView: UITableView!
     var viewModel: MainViewModel!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -15,6 +19,15 @@ class MainViewController: UIViewController, ViewModelBindableType {
     }
     
     func bindViewModel() {
+        mainTableView.rx.setDelegate(self)
+            .disposed(by: rx.disposeBag)
         
+        viewModel.memoList
+            .bind(to: mainTableView.rx.items(dataSource: viewModel.dataSource))
+            .disposed(by: rx.disposeBag)
     }
+}
+
+extension MainViewController: UITableViewDelegate {
+    
 }

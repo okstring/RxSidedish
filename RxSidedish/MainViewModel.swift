@@ -11,11 +11,25 @@ import RxCocoa
 import Action
 import RxDataSources
 
-typealias SidedishSectionModel = AnimatableSectionModel<Int, SidedishItem>
+struct MainSection {
+    var header: String
+    var items: [SidedishItem]
+}
+
+extension MainSection: AnimatableSectionModelType {
+    var identity: String {
+        return header
+    }
+
+    init(original: MainSection, items: [SidedishItem]) {
+        self = original
+        self.items = items
+    }
+}
 
 class MainViewModel: CommonViewModel {
-    let dataSource: RxTableViewSectionedAnimatedDataSource<SidedishSectionModel> = {
-        let ds = RxTableViewSectionedAnimatedDataSource<SidedishSectionModel> { (dataSource, tableView, indexPath, sidedishItem) -> UITableViewCell in
+    let dataSource: RxTableViewSectionedAnimatedDataSource<MainSection> = {
+        let ds = RxTableViewSectionedAnimatedDataSource<MainSection> { (dataSource, tableView, indexPath, sidedishItem) -> UITableViewCell in
             
             guard let cell = tableView.dequeueReusableCell(withIdentifier: MainTableViewCell.className) as? MainTableViewCell else {
                 return UITableViewCell()
@@ -25,13 +39,19 @@ class MainViewModel: CommonViewModel {
             return cell
         }
         
+        ds.titleForHeaderInSection = { dataSource, index in
+            return dataSource.sectionModels[index].header
+        }
+        
         return ds
     }()
     
-    var memoList: Observable<[[SidedishItem]]> {
+    var memoList: Observable<[MainSection]> {
         return storage.sidedishesList()
     }
     
+    
+    //viewController와 연결해야함
     func getSidedishes() {
         _ = Observable
             .zip(
