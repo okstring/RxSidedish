@@ -53,11 +53,6 @@ class SceneCoordinator: SceneCoordinatorType {
             currentVC = target.sceneViewController // 왜 두번 하는거 같지 🤔
             
             subject.onCompleted()
-        case .modal:
-            currentVC.present(target, animated: animated) {
-                subject.onCompleted()
-            }
-            currentVC = target.sceneViewController // 얘도
         }
         
         return subject.ignoreElements().asCompletable()
