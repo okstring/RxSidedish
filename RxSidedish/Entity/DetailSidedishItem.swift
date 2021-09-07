@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct DetailSidedishItem: Decodable, Equatable {
+struct DetailSidedishItem: Codable {
     let topImageURL: String
     let subTopImages: [String]
     var thumbnailImagesURL: [String] {
@@ -23,27 +23,10 @@ struct DetailSidedishItem: Decodable, Equatable {
     }
     let detailSectionImagesURL: [String]
     
-    init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        let bodyContainer = try container.nestedContainer(keyedBy: BodyCodingKeys.self, forKey: .data)
-        self.topImageURL = try bodyContainer.decode(String.self, forKey: .topImageURL)
-        self.subTopImages = try bodyContainer.decode([String].self, forKey: .subTopImagesURL)
-        self.productDescription = try bodyContainer.decode(String.self, forKey: .productDescription)
-        self.point = try bodyContainer.decode(String.self, forKey: .point)
-        self.deliveryInfo = try bodyContainer.decode(String.self, forKey: .deliveryInfo)
-        self.deliveryFee = try bodyContainer.decode(String.self, forKey: .deliveryFee)
-        self.prices = try bodyContainer.decode([String].self, forKey: .prices)
-        self.detailSectionImagesURL = try bodyContainer.decode([String].self, forKey: .detailSectionImagesURL)
-    }
-    
     enum CodingKeys: String, CodingKey {
-        case data
-    }
-    
-    enum BodyCodingKeys: String, CodingKey {
         case point, prices
         case topImageURL = "top_image"
-        case subTopImagesURL = "thumb_images"
+        case subTopImages = "thumb_images"
         case productDescription = "product_description"
         case deliveryInfo = "delivery_info"
         case deliveryFee = "delivery_fee"

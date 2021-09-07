@@ -8,6 +8,7 @@
 import UIKit
 import RxCocoa
 import RxSwift
+import RxViewController
 
 class DetailViewController: UIViewController, ViewModelBindableType {
     var viewModel: DetailViewModel!
@@ -28,6 +29,12 @@ class DetailViewController: UIViewController, ViewModelBindableType {
     
     func bindViewModel() {
         //MARK: - navigationController가 왜 없을까?
+        
+        rx.viewWillAppear
+            .take(1)
+            .map{ _ in }
+            .bind(to: viewModel.fetchItem)
+            .disposed(by: rx.disposeBag)
         
         viewModel.title
             .drive(navigationItem.rx.title)

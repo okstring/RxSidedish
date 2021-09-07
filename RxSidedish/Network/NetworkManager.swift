@@ -21,6 +21,7 @@ class NetworkManager: Networkable {
             AF.request(url,
                        method: .get)
                 .responseDecodable(of: type) { (dataResponse) in
+                    print(dataResponse.data, dataResponse.error, dataResponse.value)
                     guard let statusCode = dataResponse.response?.statusCode else {
                         return emitter.onError(NetworkError.internet)
                     }
