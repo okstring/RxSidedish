@@ -188,28 +188,17 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="331"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="IKC-G0-zTL" customClass="ThumbnailStackView" customModule="RxSidedish" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="1242" height="331"/>
-                                                        <subviews>
-                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="csa-fM-uVL">
-                                                                <rect key="frame" x="0.0" y="0.0" width="414" height="331"/>
-                                                            </imageView>
-                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rMB-WL-5Rr">
-                                                                <rect key="frame" x="414" y="0.0" width="414" height="331"/>
-                                                            </imageView>
-                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3ZH-u5-83L">
-                                                                <rect key="frame" x="828" y="0.0" width="414" height="331"/>
-                                                            </imageView>
-                                                        </subviews>
+                                                        <rect key="frame" x="0.0" y="0.0" width="414" height="331"/>
                                                     </stackView>
                                                 </subviews>
                                                 <constraints>
                                                     <constraint firstItem="IKC-G0-zTL" firstAttribute="trailing" secondItem="FkZ-Af-jFX" secondAttribute="trailing" id="5Kd-pW-sfO"/>
-                                                    <constraint firstItem="IKC-G0-zTL" firstAttribute="height" secondItem="NBm-qf-DS1" secondAttribute="height" id="Oia-fI-Amo"/>
+                                                    <constraint firstItem="IKC-G0-zTL" firstAttribute="height" secondItem="NBm-qf-DS1" secondAttribute="height" id="5fU-yU-qxK"/>
+                                                    <constraint firstItem="IKC-G0-zTL" firstAttribute="width" secondItem="NBm-qf-DS1" secondAttribute="width" priority="750" id="CFC-0X-9Qx"/>
                                                     <constraint firstItem="FkZ-Af-jFX" firstAttribute="leading" secondItem="IKC-G0-zTL" secondAttribute="leading" id="VCd-ug-Asj"/>
                                                     <constraint firstItem="IKC-G0-zTL" firstAttribute="bottom" secondItem="FkZ-Af-jFX" secondAttribute="bottom" id="hN0-De-oHx"/>
                                                     <constraint firstAttribute="width" secondItem="Hm1-5N-wBK" secondAttribute="height" multiplier="5:4" id="jBX-Kp-MMZ"/>
                                                     <constraint firstItem="IKC-G0-zTL" firstAttribute="top" secondItem="FkZ-Af-jFX" secondAttribute="top" id="jVr-7l-Khl"/>
-                                                    <constraint firstItem="IKC-G0-zTL" firstAttribute="width" secondItem="NBm-qf-DS1" secondAttribute="width" multiplier="3" id="qGH-ct-BaW"/>
                                                 </constraints>
                                                 <viewLayoutGuide key="contentLayoutGuide" id="FkZ-Af-jFX"/>
                                                 <viewLayoutGuide key="frameLayoutGuide" id="NBm-qf-DS1"/>

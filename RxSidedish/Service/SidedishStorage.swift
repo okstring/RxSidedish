@@ -15,8 +15,6 @@ class SidedishStorage: SidedishStorageType {
                               [SidedishItem.EMPTY(dummyID: "B")],
                               [SidedishItem.EMPTY(dummyID: "C")]]
     
-    private var currentSidedish = SidedishItem.EMPTY(dummyID: "Z")
-    
     private var sections: [MainSection] {
         return [
             MainSection(header: "모두가 좋아하는 든든한 메인요리", category: "메인요리", items: sidedishes[0]),

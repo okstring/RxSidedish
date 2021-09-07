@@ -8,7 +8,7 @@
 import UIKit
 
 class DetailImageStackView: UIStackView {
-
+    //width
     
 
 }

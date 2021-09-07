@@ -51,7 +51,7 @@ class MainViewModel: CommonViewModel {
     lazy var detailAction: Action<SidedishItem, Void> = {
         return Action { item in
             
-            let detailViewModel = DetailViewModel(title: item.title, sceneCoordinator: self.sceneCoordinator, storage: self.storage, networkManager: self.networkManager)
+            let detailViewModel = DetailViewModel(title: item.title, sceneCoordinator: self.sceneCoordinator, storage: self.storage, networkManager: self.networkManager, detailHash: item.detailHash)
             
             let detailScene = Scene.detail(detailViewModel)
             
