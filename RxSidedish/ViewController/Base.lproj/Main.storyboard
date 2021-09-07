@@ -27,13 +27,14 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="130"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cloud.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="SzI-a2-AuY" customClass="RoundImageView" customModule="RxSidedish" customModuleProvider="target">
-                                                    <rect key="frame" x="16" y="3" width="130" height="124.5"/>
-                                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <color key="tintColor" systemColor="systemBackgroundColor"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cloud" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="SzI-a2-AuY" customClass="RoundImageView" customModule="RxSidedish" customModuleProvider="target">
+                                                    <rect key="frame" x="16" y="4" width="130" height="122"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="SzI-a2-AuY" secondAttribute="height" id="w3H-uJ-tPL"/>
                                                     </constraints>
+                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="small" weight="thin"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="boolean" keyPath="cornerRadius" value="YES"/>
                                                     </userDefinedRuntimeAttributes>
@@ -177,14 +178,14 @@
             <size key="intrinsicContentSize" width="42" height="14.5"/>
         </designable>
         <designable name="SzI-a2-AuY">
-            <size key="intrinsicContentSize" width="22" height="20"/>
+            <size key="intrinsicContentSize" width="18" height="20"/>
         </designable>
         <designable name="acn-nh-DvD">
             <size key="intrinsicContentSize" width="52" height="14.5"/>
         </designable>
     </designables>
     <resources>
-        <image name="cloud.fill" catalog="system" width="128" height="84"/>
+        <image name="cloud" catalog="system" width="128" height="87"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
