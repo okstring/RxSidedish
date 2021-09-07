@@ -11,7 +11,10 @@ import RxSwift
 
 class DetailViewController: UIViewController, ViewModelBindableType {
     var viewModel: DetailViewModel!
-    @IBOutlet var thumbnailImageView: [UIImageView]!
+    
+    @IBOutlet weak var thumbnailStackView: ThumbnailStackView!
+    @IBOutlet weak var descriptionView: DescriptionView!
+    @IBOutlet weak var detailImageStackView: DetailImageStackView!
     
     override func viewDidLoad() {
         super.viewDidLoad()

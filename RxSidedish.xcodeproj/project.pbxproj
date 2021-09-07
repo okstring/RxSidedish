@@ -28,6 +28,10 @@
 		224BE9CF26E622ED00EC99C6 /* RoundImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224BE9CE26E622ED00EC99C6 /* RoundImageView.swift */; };
 		226B8BBF26E65FB200F79865 /* RoundBadgeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226B8BBE26E65FB200F79865 /* RoundBadgeLabel.swift */; };
 		226B8BC326E6629200F79865 /* MainTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226B8BC226E6629200F79865 /* MainTableViewDelegate.swift */; };
+		22B54BE726E7660900F76088 /* ThumbnailStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B54BE626E7660900F76088 /* ThumbnailStackView.swift */; };
+		22B54BEA26E7661F00F76088 /* DescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B54BE926E7661F00F76088 /* DescriptionView.swift */; };
+		22B54BF126E7666700F76088 /* DetailImageStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B54BF026E7666700F76088 /* DetailImageStackView.swift */; };
+		22B54BF426E7694100F76088 /* PurchaseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B54BF326E7694100F76088 /* PurchaseButton.swift */; };
 		22BF2B0826DD13AF009A8B51 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BF2B0726DD13AF009A8B51 /* AppDelegate.swift */; };
 		22BF2B0A26DD13AF009A8B51 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BF2B0926DD13AF009A8B51 /* SceneDelegate.swift */; };
 		22BF2B0C26DD13AF009A8B51 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BF2B0B26DD13AF009A8B51 /* MainViewController.swift */; };
@@ -63,6 +67,10 @@
 		224BE9CE26E622ED00EC99C6 /* RoundImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundImageView.swift; sourceTree = "<group>"; };
 		226B8BBE26E65FB200F79865 /* RoundBadgeLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundBadgeLabel.swift; sourceTree = "<group>"; };
 		226B8BC226E6629200F79865 /* MainTableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewDelegate.swift; sourceTree = "<group>"; };
+		22B54BE626E7660900F76088 /* ThumbnailStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailStackView.swift; sourceTree = "<group>"; };
+		22B54BE926E7661F00F76088 /* DescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionView.swift; sourceTree = "<group>"; };
+		22B54BF026E7666700F76088 /* DetailImageStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailImageStackView.swift; sourceTree = "<group>"; };
+		22B54BF326E7694100F76088 /* PurchaseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseButton.swift; sourceTree = "<group>"; };
 		22BF2B0426DD13AF009A8B51 /* RxSidedish.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RxSidedish.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		22BF2B0726DD13AF009A8B51 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		22BF2B0926DD13AF009A8B51 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -109,6 +117,10 @@
 				224BE9CA26E61A8400EC99C6 /* MainTableViewHeaderView.swift */,
 				224BE9CE26E622ED00EC99C6 /* RoundImageView.swift */,
 				226B8BBE26E65FB200F79865 /* RoundBadgeLabel.swift */,
+				22B54BF326E7694100F76088 /* PurchaseButton.swift */,
+				22B54BE626E7660900F76088 /* ThumbnailStackView.swift */,
+				22B54BE926E7661F00F76088 /* DescriptionView.swift */,
+				22B54BF026E7666700F76088 /* DetailImageStackView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -353,14 +365,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				223F3F8626DDFE00005AFBB0 /* TransitionModel.swift in Sources */,
+				22B54BF126E7666700F76088 /* DetailImageStackView.swift in Sources */,
 				223F3F9B26DE7281005AFBB0 /* DetailViewController.swift in Sources */,
 				221E9B2526DDD77A00FCF81C /* MainBody.swift in Sources */,
 				226B8BBF26E65FB200F79865 /* RoundBadgeLabel.swift in Sources */,
 				223F3F7326DDE5EE005AFBB0 /* NetworkError.swift in Sources */,
+				22B54BF426E7694100F76088 /* PurchaseButton.swift in Sources */,
 				226B8BC326E6629200F79865 /* MainTableViewDelegate.swift in Sources */,
 				223F3F8126DDF3DF005AFBB0 /* DetailSidedishItem.swift in Sources */,
 				223F3F8926DDFFAF005AFBB0 /* Scene.swift in Sources */,
 				22DB2C7E26DF0F4800E81B40 /* SidedishStorage.swift in Sources */,
+				22B54BEA26E7661F00F76088 /* DescriptionView.swift in Sources */,
 				222E079026E0C43B00F53227 /* MainTableViewCell.swift in Sources */,
 				222E078B26E0C1F000F53227 /* CommonViewModel.swift in Sources */,
 				223F3F9826DE701A005AFBB0 /* ViewModelBindableType.swift in Sources */,
@@ -376,6 +391,7 @@
 				22BF2B0826DD13AF009A8B51 /* AppDelegate.swift in Sources */,
 				22DB2C8526DF15CF00E81B40 /* SidedishStorageType.swift in Sources */,
 				220E095E26DD1A30003C72AE /* NetworkManager.swift in Sources */,
+				22B54BE726E7660900F76088 /* ThumbnailStackView.swift in Sources */,
 				22BF2B0A26DD13AF009A8B51 /* SceneDelegate.swift in Sources */,
 				223F3F9026DE002B005AFBB0 /* DetailViewModel.swift in Sources */,
 				222E079326E0C90300F53227 /* NSObject+ClassNameProtocol.swift in Sources */,
