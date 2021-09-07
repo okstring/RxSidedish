@@ -11,6 +11,7 @@ import RxSwift
 
 class DetailViewController: UIViewController, ViewModelBindableType {
     var viewModel: DetailViewModel!
+    @IBOutlet var thumbnailImageView: [UIImageView]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
