@@ -23,6 +23,8 @@ class DetailViewController: UIViewController, ViewModelBindableType {
     }
     
     func bindViewModel() {
+        //MARK: - navigationController가 왜 없을까?
+        
         viewModel.title
             .drive(navigationItem.rx.title)
             .disposed(by: rx.disposeBag)

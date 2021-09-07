@@ -166,8 +166,35 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="414"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oO9-TV-aEr">
-                                        <rect key="frame" x="0.0" y="0.0" width="2070" height="414"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="1242" height="414"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="IKC-G0-zTL">
+                                                <rect key="frame" x="0.0" y="0.0" width="1242" height="414"/>
+                                                <subviews>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="csa-fM-uVL">
+                                                        <rect key="frame" x="0.0" y="0.0" width="414" height="414"/>
+                                                    </imageView>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rMB-WL-5Rr">
+                                                        <rect key="frame" x="414" y="0.0" width="414" height="414"/>
+                                                    </imageView>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3ZH-u5-83L">
+                                                        <rect key="frame" x="828" y="0.0" width="414" height="414"/>
+                                                    </imageView>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="3ZH-u5-83L" firstAttribute="height" secondItem="IKC-G0-zTL" secondAttribute="height" id="LzE-Cc-JZA"/>
+                                                    <constraint firstItem="rMB-WL-5Rr" firstAttribute="height" secondItem="IKC-G0-zTL" secondAttribute="height" id="Tnx-it-hqh"/>
+                                                    <constraint firstItem="csa-fM-uVL" firstAttribute="height" secondItem="IKC-G0-zTL" secondAttribute="height" id="xFt-Re-ehn"/>
+                                                </constraints>
+                                            </stackView>
+                                        </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstItem="IKC-G0-zTL" firstAttribute="leading" secondItem="oO9-TV-aEr" secondAttribute="leading" id="Frg-jJ-vcJ"/>
+                                            <constraint firstItem="IKC-G0-zTL" firstAttribute="top" secondItem="oO9-TV-aEr" secondAttribute="top" id="VbP-yk-A9f"/>
+                                            <constraint firstAttribute="bottom" secondItem="IKC-G0-zTL" secondAttribute="bottom" id="icN-eu-mjk"/>
+                                            <constraint firstAttribute="trailing" secondItem="IKC-G0-zTL" secondAttribute="trailing" id="sVc-Wl-aJp"/>
+                                        </constraints>
                                     </view>
                                 </subviews>
                                 <constraints>
@@ -176,7 +203,7 @@
                                     <constraint firstAttribute="bottom" secondItem="oO9-TV-aEr" secondAttribute="bottom" id="HIu-kR-ydz"/>
                                     <constraint firstItem="oO9-TV-aEr" firstAttribute="height" secondItem="Hm1-5N-wBK" secondAttribute="height" id="ZWb-tB-oKH"/>
                                     <constraint firstAttribute="trailing" secondItem="oO9-TV-aEr" secondAttribute="trailing" id="dj5-ek-CpT"/>
-                                    <constraint firstItem="oO9-TV-aEr" firstAttribute="width" secondItem="Hm1-5N-wBK" secondAttribute="width" multiplier="5" id="h4Q-pQ-r55"/>
+                                    <constraint firstItem="oO9-TV-aEr" firstAttribute="width" secondItem="Hm1-5N-wBK" secondAttribute="width" multiplier="3" id="h4Q-pQ-r55"/>
                                     <constraint firstItem="oO9-TV-aEr" firstAttribute="top" secondItem="Hm1-5N-wBK" secondAttribute="top" id="ose-9x-n4g"/>
                                 </constraints>
                                 <viewLayoutGuide key="contentLayoutGuide" id="FkZ-Af-jFX"/>

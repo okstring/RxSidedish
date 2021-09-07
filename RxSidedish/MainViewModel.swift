@@ -59,7 +59,7 @@ class MainViewModel: CommonViewModel {
         }
     }()
     
-    func getSidedishes() -> Observable<[MainSection]> {
+    func fetchSidedishes() -> Observable<[MainSection]> {
         Observable.zip(
             ServerAPI.mainCategories.map {
                 networkManager.get(type: MainBody.self, endpoint: $0)

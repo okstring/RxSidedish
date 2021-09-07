@@ -9,6 +9,7 @@ import UIKit
 import NSObject_Rx
 import RxSwift
 import RxCocoa
+import RxViewController
 
 class MainViewController: UIViewController, ViewModelBindableType {
     @IBOutlet weak var mainTableView: UITableView!
@@ -40,11 +41,13 @@ class MainViewController: UIViewController, ViewModelBindableType {
             .bind(to: viewModel.detailAction.inputs)
             .disposed(by: rx.disposeBag)
         
-        viewModel.getSidedishes()
+        //TODO: -
+        viewModel.fetchSidedishes()
             .subscribe{ _ in }
             .disposed(by: rx.disposeBag)
         
-        mainTableView.rx.setDelegate(delegate)
+        mainTableView.rx
+            .setDelegate(delegate)
             .disposed(by: rx.disposeBag)
         
         viewModel.mainSections
