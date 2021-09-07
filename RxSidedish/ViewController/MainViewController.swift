@@ -9,7 +9,6 @@ import UIKit
 import NSObject_Rx
 import RxSwift
 import RxCocoa
-import RxViewController
 
 class MainViewController: UIViewController, ViewModelBindableType {
     @IBOutlet weak var mainTableView: UITableView!
@@ -23,13 +22,22 @@ class MainViewController: UIViewController, ViewModelBindableType {
         configureTableView()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
+    }
+    
     private func configureTableView() {
         mainTableView.register(MainTableViewHeaderView.self, forHeaderFooterViewReuseIdentifier: MainTableViewHeaderView.className)
     }
     
     func bindViewModel() {
-        rx.viewWillAppear
-            .bind(to: navigationController!.rx.isNavigationBarHidden)
+        Observable.zip(mainTableView.rx.modelSelected(SidedishItem.self), mainTableView.rx.itemSelected)
+            .do(onNext: { [unowned self] (_, indexPath) in
+                self.mainTableView.deselectRow(at: indexPath, animated: true)
+            })
+            .map{ $0.0 }
+            .bind(to: viewModel.detailAction.inputs)
             .disposed(by: rx.disposeBag)
         
         viewModel.getSidedishes()

@@ -29,7 +29,9 @@ extension Scene {
             mainVC.bind(viewModel: viewModel)
             return nav
         case .detail(let viewModel):
-            var detailVC = DetailViewController()
+            guard var detailVC = storyboard.instantiateViewController(identifier: "DetailVC") as? DetailViewController else {
+                fatalError()
+            }
             detailVC.bind(viewModel: viewModel)
             return detailVC
         }

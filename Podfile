@@ -11,7 +11,5 @@ target 'RxSidedish' do
   pod 'Action'
   pod 'NSObject+Rx'
   pod 'RxDataSources'
-  pod 'RxCoreData'
   pod 'Alamofire'
-  pod 'RxViewController'
 end

@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import RxCocoa
+import RxSwift
 
 class DetailViewController: UIViewController, ViewModelBindableType {
     var viewModel: DetailViewModel!
@@ -15,7 +17,15 @@ class DetailViewController: UIViewController, ViewModelBindableType {
 
         
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
+    }
+    
     func bindViewModel() {
-        
+        viewModel.title
+            .drive(navigationItem.rx.title)
+            .disposed(by: rx.disposeBag)
     }
 }

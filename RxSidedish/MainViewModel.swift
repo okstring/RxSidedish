@@ -8,6 +8,7 @@
 import Foundation
 import RxSwift
 import RxDataSources
+import Action
 
 struct MainSection {
     var header: String
@@ -47,6 +48,16 @@ class MainViewModel: CommonViewModel {
         return storage.sidedishesList()
     }
     
+    lazy var detailAction: Action<SidedishItem, Void> = {
+        return Action { item in
+            
+            let detailViewModel = DetailViewModel(title: item.title, sceneCoordinator: self.sceneCoordinator, storage: self.storage, networkManager: self.networkManager)
+            
+            let detailScene = Scene.detail(detailViewModel)
+            
+            return self.sceneCoordinator.transition(to: detailScene, using: .push, animated: true).asObservable().map{ _ in }
+        }
+    }()
     
     func getSidedishes() -> Observable<[MainSection]> {
         Observable.zip(

@@ -14,5 +14,6 @@ enum TransitionStyle {
 
 enum TransitionError: Error {
     case navigationControllerMissing
+    case connotPop
     case unknown
 }
