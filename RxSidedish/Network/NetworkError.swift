@@ -14,6 +14,7 @@ enum NetworkError: Error {
     case notAllowed
     case server
     case unknown
+    case imageURL
 }
 
 extension NetworkError: CustomStringConvertible {
@@ -31,6 +32,8 @@ extension NetworkError: CustomStringConvertible {
             return "서버 상태가 불안정합니다"
         case .unknown:
             return "알 수 없는 문제가 발생했습니다"
+        case .imageURL:
+            return "imageURL이 정확하지 않습니다."
         }
     }
 }

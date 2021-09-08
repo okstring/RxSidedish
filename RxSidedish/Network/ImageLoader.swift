@@ -7,11 +7,16 @@
 
 import Foundation
 import Alamofire
+import RxSwift
+import RxCocoa
+
 
 final class ImageLoader {
     static private let cacheURL = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)[0]
-    static func load(from imageUrl: String, completionHandler: @escaping (UIImage?) -> ()) -> DownloadRequest? {
-        guard let fileName = URL(string: imageUrl)?.lastPathComponent else { return nil }
+    static func load(from imageURL: String, completionHandler: @escaping (UIImage?) -> ()) -> DownloadRequest? {
+        guard let fileName = URL(string: imageURL)?.lastPathComponent else {
+            return nil
+        }
 
         if let cache = availableCache(of: fileName) {
             let image = UIImage(contentsOfFile: cache)
@@ -22,7 +27,7 @@ final class ImageLoader {
             }
         }
 
-        let request = downloadRequest(of: imageUrl, fileName: fileName)
+        let request = downloadRequest(of: imageURL, fileName: fileName)
         request.responseURL { response in
             if response.error == nil, let filePath = response.fileURL?.path {
                 let image = UIImage(contentsOfFile: filePath)
@@ -33,6 +38,32 @@ final class ImageLoader {
             }
         }
         return request
+    }
+    
+    static func rxLoad(from imageURL: String) -> Driver<UIImage?> {
+        return Observable.create{ emitter in
+            guard let fileName = URL(string: imageURL)?.lastPathComponent else {
+                emitter.onError(NetworkError.imageURL)
+                return Disposables.create()
+            }
+            
+            if let cache = availableCache(of: fileName) {
+                let image = UIImage(contentsOfFile: cache)
+                
+                emitter.onNext(image)
+            }
+
+            let request = downloadRequest(of: imageURL, fileName: fileName)
+            request.responseURL { response in
+                if response.error == nil, let filePath = response.fileURL?.path {
+                    let image = UIImage(contentsOfFile: filePath)
+
+                    emitter.onNext(image)
+                }
+            }
+            return Disposables.create()
+        }.subscribe(on: ConcurrentDispatchQueueScheduler(qos: .userInteractive))
+        .asDriver(onErrorJustReturn: nil)
     }
     
     static private func availableCache(of fileName: String) -> String? {

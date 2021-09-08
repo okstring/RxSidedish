@@ -7,6 +7,7 @@
 
 import UIKit
 import Alamofire
+import RxSwift
 
 class MainTableViewCell: UITableViewCell {
     @IBOutlet weak var sidedishTitle: UILabel!
@@ -16,7 +17,7 @@ class MainTableViewCell: UITableViewCell {
     @IBOutlet weak var sPrice: UILabel!
     @IBOutlet weak var eventBadge: RoundBadgeLabel!
     @IBOutlet weak var launchingBadge: RoundBadgeLabel!
-    var downloadRequest: DownloadRequest?
+    var downloadDisposable: Disposable?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -25,7 +26,7 @@ class MainTableViewCell: UITableViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        downloadRequest?.cancel()
+        downloadDisposable?.dispose()
         sidedishImageView.image = nil
         eventBadge.isHidden = false
         launchingBadge.isHidden = false
@@ -49,8 +50,14 @@ class MainTableViewCell: UITableViewCell {
         sPrice.text = item.sPrice
         eventBadge.isHidden = !item.hasEventBadge
         launchingBadge.isHidden = !item.hasLaunchingBadge
-        downloadRequest = ImageLoader.load(from: item.imageURL, completionHandler: { [weak self] (image) in
-            self?.sidedishImageView.image = image?.resize(newWidth: self?.sidedishImageView.bounds.width ?? 130)
-        })
+        loadImage(imageURL: item.imageURL)
+    }
+    
+    func loadImage(imageURL: String) {
+        let imageWidth = self.sidedishImageView.bounds.width
+        downloadDisposable = ImageLoader.rxLoad(from: imageURL)
+            .drive(onNext: { [weak self] image in
+                self?.sidedishImageView.image = image?.resize(newWidth: imageWidth)
+            })
     }
 }
