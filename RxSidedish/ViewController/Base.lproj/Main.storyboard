@@ -163,13 +163,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="23Y-zU-51U" customClass="PurchaseButton" customModule="RxSidedish" customModuleProvider="target">
-                                <rect key="frame" x="32" y="806" width="350" height="40"/>
+                                <rect key="frame" x="56" y="806" width="302" height="40"/>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="sCa-z9-Obc"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
-                                <state key="normal" title="Button">
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <state key="normal" title="바로 구매하기">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
@@ -374,8 +374,8 @@
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Npk-gz-bUZ" firstAttribute="bottom" secondItem="23Y-zU-51U" secondAttribute="bottom" constant="16" id="3uF-4K-KdF"/>
-                            <constraint firstItem="Npk-gz-bUZ" firstAttribute="trailing" secondItem="23Y-zU-51U" secondAttribute="trailing" constant="32" id="VM9-pl-RCj"/>
-                            <constraint firstItem="23Y-zU-51U" firstAttribute="leading" secondItem="Npk-gz-bUZ" secondAttribute="leading" constant="32" id="g5z-QE-ZJI"/>
+                            <constraint firstItem="Npk-gz-bUZ" firstAttribute="trailing" secondItem="23Y-zU-51U" secondAttribute="trailing" constant="56" id="VM9-pl-RCj"/>
+                            <constraint firstItem="23Y-zU-51U" firstAttribute="leading" secondItem="Npk-gz-bUZ" secondAttribute="leading" constant="56" id="g5z-QE-ZJI"/>
                         </constraints>
                     </view>
                     <connections>
@@ -409,7 +409,7 @@
     </scenes>
     <designables>
         <designable name="23Y-zU-51U">
-            <size key="intrinsicContentSize" width="70" height="39"/>
+            <size key="intrinsicContentSize" width="109" height="36"/>
         </designable>
         <designable name="MWH-EP-6e7">
             <size key="intrinsicContentSize" width="42" height="14.5"/>
