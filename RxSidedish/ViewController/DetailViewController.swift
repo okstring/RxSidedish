@@ -9,6 +9,7 @@ import UIKit
 import RxCocoa
 import RxSwift
 import RxViewController
+import NSObject_Rx
 
 class DetailViewController: UIViewController, ViewModelBindableType {
     var viewModel: DetailViewModel!
@@ -39,5 +40,15 @@ class DetailViewController: UIViewController, ViewModelBindableType {
         viewModel.title
             .drive(navigationItem.rx.title)
             .disposed(by: rx.disposeBag)
+        
+        viewModel.descriptionSidedishItem
+            .subscribe(onNext: { [weak self] title, item in
+                self?.descriptionView.configure(title: title, item: item)
+            }).disposed(by: rx.disposeBag)
+        
+        //MARK: - Network를 래핑하기
+//        var thumbnailImagesURL: Observable<[String]>
+//        var detailImagesURL: Observable<[String]>
+//        var detailSidedishItem: Observable<DetailSidedishItem>
     }
 }

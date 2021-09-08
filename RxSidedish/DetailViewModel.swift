@@ -15,7 +15,7 @@ class DetailViewModel: CommonViewModel {
     var fetchItem: AnyObserver<Void>
     var thumbnailImagesURL: Observable<[String]>
     var detailImagesURL: Observable<[String]>
-    var detailSidedishItem: Observable<DetailSidedishItem>
+    var descriptionSidedishItem: Observable<(String, DetailSidedishItem)>
     
     init(title: String, sceneCoordinator: SceneCoordinatorType, storage: SidedishStorageType, networkManager: Networkable, detailHash: String) {
         
@@ -37,7 +37,7 @@ class DetailViewModel: CommonViewModel {
         detailImagesURL = item.map({ $0.detailSectionImagesURL })
             .asObservable()
         
-        detailSidedishItem = item.asObservable()
+        descriptionSidedishItem = Observable.zip(Observable.just(title), item.asObservable())
         
         super.init(title: title, sceneCoordinator: sceneCoordinator, storage: storage, networkManager: networkManager)
     }
