@@ -31,6 +31,21 @@ class DetailViewController: UIViewController, ViewModelBindableType {
     func bindViewModel() {
         //MARK: - navigationController가 왜 없을까?
         
+        viewModel.item
+            .subscribe(onNext: { [weak self] title, item in
+                self?.descriptionView.configure(title: title, item: item)
+            }).disposed(by: rx.disposeBag)
+        
+        viewModel.item
+            .map({ $1.thumbnailImagesURL })
+            .flatMap({ Observable.from($0) })
+            .flatMap({ ImageLoader.rxLoad(from: $0) })
+            .subscribe(onNext: { [weak self] image in
+                self?.thumbnailStackView.addArrangedImageView(image: image, width: self?.view.bounds.width)
+            }).disposed(by: rx.disposeBag)
+        
+        //MARK: - detailImage
+        
         rx.viewWillAppear
             .take(1)
             .map{ _ in }
@@ -40,15 +55,5 @@ class DetailViewController: UIViewController, ViewModelBindableType {
         viewModel.title
             .drive(navigationItem.rx.title)
             .disposed(by: rx.disposeBag)
-        
-        viewModel.descriptionSidedishItem
-            .subscribe(onNext: { [weak self] title, item in
-                self?.descriptionView.configure(title: title, item: item)
-            }).disposed(by: rx.disposeBag)
-        
-        //MARK: - Network를 래핑하기
-//        var thumbnailImagesURL: Observable<[String]>
-//        var detailImagesURL: Observable<[String]>
-//        var detailSidedishItem: Observable<DetailSidedishItem>
     }
 }

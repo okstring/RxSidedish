@@ -13,31 +13,20 @@ class DetailViewModel: CommonViewModel {
     var disposeBag = DisposeBag()
     
     var fetchItem: AnyObserver<Void>
-    var thumbnailImagesURL: Observable<[String]>
-    var detailImagesURL: Observable<[String]>
-    var descriptionSidedishItem: Observable<(String, DetailSidedishItem)>
+    
+    var item: Observable<(String, DetailSidedishItem)>
     
     init(title: String, sceneCoordinator: SceneCoordinatorType, storage: SidedishStorageType, networkManager: Networkable, detailHash: String) {
         
         let fetching = PublishSubject<Void>()
-        let item = BehaviorSubject<DetailSidedishItem>(value: DetailSidedishItem.EMPTY)
         
         fetchItem = fetching.asObserver()
         
-        fetching
+        item = fetching
             .asObservable()
+            .debug()
             .flatMap{ networkManager.get(type: DetailBody.self, endpoint: .detail(detailHash)) }
-            .map({ return $0.data })
-            .subscribe(onNext: item.onNext)
-            .disposed(by: disposeBag)
-        
-        thumbnailImagesURL = item.map({ $0.thumbnailImagesURL })
-            .asObservable()
-            
-        detailImagesURL = item.map({ $0.detailSectionImagesURL })
-            .asObservable()
-        
-        descriptionSidedishItem = Observable.zip(Observable.just(title), item.asObservable())
+            .map({ (title, $0.data) })
         
         super.init(title: title, sceneCoordinator: sceneCoordinator, storage: storage, networkManager: networkManager)
     }
