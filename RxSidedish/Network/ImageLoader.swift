@@ -51,6 +51,7 @@ final class ImageLoader {
                 let image = UIImage(contentsOfFile: cache)
                 
                 emitter.onNext(image)
+                return Disposables.create()
             }
 
             let request = downloadRequest(of: imageURL, fileName: fileName)
