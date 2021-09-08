@@ -8,5 +8,4 @@
 import UIKit
 
 class ThumbnailStackView: UIStackView {
-    // height는 stackView, width는 frame layout
 }

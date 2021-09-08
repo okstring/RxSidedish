@@ -15,5 +15,4 @@ class DescriptionView: UIView {
     @IBOutlet weak var deliveryInfo: UILabel!
     @IBOutlet weak var deliveryFee: UILabel!
     
-
 }
