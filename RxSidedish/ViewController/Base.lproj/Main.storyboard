@@ -354,7 +354,7 @@
                                 <viewLayoutGuide key="contentLayoutGuide" id="Yas-I4-lvn"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="hPW-RT-r14"/>
                             </scrollView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="23Y-zU-51U" customClass="PurchaseButton" customModule="RxSidedish" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="23Y-zU-51U">
                                 <rect key="frame" x="0.0" y="832" width="414" height="64"/>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
@@ -406,9 +406,6 @@
         </scene>
     </scenes>
     <designables>
-        <designable name="23Y-zU-51U">
-            <size key="intrinsicContentSize" width="109" height="36"/>
-        </designable>
         <designable name="MWH-EP-6e7">
             <size key="intrinsicContentSize" width="42" height="14.5"/>
         </designable>
