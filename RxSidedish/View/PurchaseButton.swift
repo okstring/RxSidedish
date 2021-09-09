@@ -15,14 +15,4 @@ class PurchaseButton: UIButton {
             layer.cornerRadius = frame.width / 80
         }
     }
-    
-    @IBInspectable var shadow: Bool = false {
-        didSet {
-            layer.cornerRadius = 15
-            layer.shadowColor = UIColor.gray.cgColor
-            layer.shadowOpacity = 1.0
-            layer.shadowOffset = CGSize.zero
-            layer.shadowRadius = 10
-        }
-    }
 }
