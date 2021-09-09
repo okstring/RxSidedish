@@ -26,6 +26,12 @@ class DetailViewController: UIViewController, ViewModelBindableType {
     func bindViewModel() {
         //MARK: - navigationController가 왜 없을까?
         
+        rx.viewWillAppear
+            .take(1)
+            .map{ _ in }
+            .bind(to: viewModel.fetchItem)
+            .disposed(by: rx.disposeBag)
+        
         viewModel.item
             .subscribe(onNext: { [weak self] title, item in
                 self?.descriptionView.configure(title: title, item: item)
@@ -42,16 +48,11 @@ class DetailViewController: UIViewController, ViewModelBindableType {
         viewModel.item
             .map({ $1.detailSectionImagesURL })
             .flatMap({ Observable.from($0) })
-            .flatMap({ ImageLoader.rxLoad(from: $0) })
+            .flatMap({ ImageLoader.rxLoad(from: $0) }) //MARK: - 뷰 모델로 옮길수 있지 않을까?
             .subscribe(onNext: { [weak self] image in
                 self?.detailImageStackView.addArrangedImageView(image: image, width: self?.view.bounds.width)
             }).disposed(by: rx.disposeBag)
         
-        rx.viewWillAppear
-            .take(1)
-            .map{ _ in }
-            .bind(to: viewModel.fetchItem)
-            .disposed(by: rx.disposeBag)
         
         viewModel.title
             .drive(navigationItem.rx.title)

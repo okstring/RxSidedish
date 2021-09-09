@@ -13,7 +13,6 @@ class DetailViewModel: CommonViewModel {
     var disposeBag = DisposeBag()
     
     var fetchItem: AnyObserver<Void>
-    
     var item: Observable<(String, DetailSidedishItem)>
     
     init(title: String, sceneCoordinator: SceneCoordinatorType, storage: SidedishStorageType, networkManager: Networkable, detailHash: String) {
