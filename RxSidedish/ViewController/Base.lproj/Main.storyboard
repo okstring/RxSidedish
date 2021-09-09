@@ -198,8 +198,8 @@
                                                                 <rect key="frame" x="0.0" y="0.0" width="382" height="50"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="제목" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lrH-rV-KuL">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="31.5" height="22.5"/>
-                                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="35" height="22.5"/>
+                                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
@@ -319,7 +319,7 @@
                                                         </subviews>
                                                     </stackView>
                                                 </subviews>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <color key="backgroundColor" systemColor="systemGray6Color"/>
                                                 <constraints>
                                                     <constraint firstAttribute="trailing" secondItem="Dh7-im-0lp" secondAttribute="trailing" constant="16" id="5nJ-Ey-c2I"/>
                                                     <constraint firstItem="Dh7-im-0lp" firstAttribute="leading" secondItem="Gpa-xz-lJU" secondAttribute="leading" constant="16" id="S4u-u0-DTc"/>
@@ -429,6 +429,9 @@
         </systemColor>
         <systemColor name="systemGray4Color">
             <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGray6Color">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGrayColor">
             <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
