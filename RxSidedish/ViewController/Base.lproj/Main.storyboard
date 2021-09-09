@@ -162,21 +162,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="23Y-zU-51U" customClass="PurchaseButton" customModule="RxSidedish" customModuleProvider="target">
-                                <rect key="frame" x="56" y="806" width="302" height="40"/>
-                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="sCa-z9-Obc"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                <state key="normal" title="바로 구매하기">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="shadow" value="YES"/>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="cornerRadius" value="YES"/>
-                                </userDefinedRuntimeAttributes>
-                            </button>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5ki-Gk-w7y">
                                 <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -369,13 +354,26 @@
                                 <viewLayoutGuide key="contentLayoutGuide" id="Yas-I4-lvn"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="hPW-RT-r14"/>
                             </scrollView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="23Y-zU-51U" customClass="PurchaseButton" customModule="RxSidedish" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="832" width="414" height="64"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <state key="normal" title="바로 구매하기">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="shadow" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="cornerRadius" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Npk-gz-bUZ"/>
-                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Npk-gz-bUZ" firstAttribute="bottom" secondItem="23Y-zU-51U" secondAttribute="bottom" constant="16" id="3uF-4K-KdF"/>
-                            <constraint firstItem="Npk-gz-bUZ" firstAttribute="trailing" secondItem="23Y-zU-51U" secondAttribute="trailing" constant="56" id="VM9-pl-RCj"/>
-                            <constraint firstItem="23Y-zU-51U" firstAttribute="leading" secondItem="Npk-gz-bUZ" secondAttribute="leading" constant="56" id="g5z-QE-ZJI"/>
+                            <constraint firstAttribute="bottom" secondItem="23Y-zU-51U" secondAttribute="bottom" id="3uF-4K-KdF"/>
+                            <constraint firstItem="23Y-zU-51U" firstAttribute="top" secondItem="Npk-gz-bUZ" secondAttribute="bottom" constant="-30" id="MVO-lL-ykW"/>
+                            <constraint firstItem="Npk-gz-bUZ" firstAttribute="trailing" secondItem="23Y-zU-51U" secondAttribute="trailing" id="VM9-pl-RCj"/>
+                            <constraint firstItem="23Y-zU-51U" firstAttribute="leading" secondItem="Npk-gz-bUZ" secondAttribute="leading" id="g5z-QE-ZJI"/>
                         </constraints>
                     </view>
                     <connections>
