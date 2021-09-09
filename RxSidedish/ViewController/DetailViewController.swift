@@ -18,11 +18,6 @@ class DetailViewController: UIViewController, ViewModelBindableType {
     @IBOutlet weak var descriptionView: DescriptionView!
     @IBOutlet weak var detailImageStackView: DetailImageStackView!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(false, animated: false)
@@ -44,7 +39,13 @@ class DetailViewController: UIViewController, ViewModelBindableType {
                 self?.thumbnailStackView.addArrangedImageView(image: image, width: self?.view.bounds.width)
             }).disposed(by: rx.disposeBag)
         
-        //MARK: - detailImage
+        viewModel.item
+            .map({ $1.detailSectionImagesURL })
+            .flatMap({ Observable.from($0) })
+            .flatMap({ ImageLoader.rxLoad(from: $0) })
+            .subscribe(onNext: { [weak self] image in
+                self?.detailImageStackView.addArrangedImageView(image: image, width: self?.view.bounds.width)
+            }).disposed(by: rx.disposeBag)
         
         rx.viewWillAppear
             .take(1)
