@@ -10,7 +10,7 @@ import UIKit
 class ThumbnailStackView: UIStackView {
     
     func addArrangedImageView(image: UIImage?, width: CGFloat?) {
-        guard let width = width else {
+        guard let width = width else  {
             return
         }
         
@@ -23,7 +23,7 @@ class ThumbnailStackView: UIStackView {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             imageView.widthAnchor.constraint(equalToConstant: width),
-            imageView.heightAnchor.constraint(equalToConstant: width / 5 * 4)
+            imageView.heightAnchor.constraint(equalToConstant: frame.height)
         ])
     }
 }
