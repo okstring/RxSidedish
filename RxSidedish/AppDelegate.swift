@@ -16,8 +16,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let sceneCoordinator = SceneCoordinator(window: window!)
         let storage = SidedishStorage()
-        let networkManager = NetworkManager()
-        let mainViewModel = MainViewModel(title: "", sceneCoordinator: sceneCoordinator, storage: storage, networkManager: networkManager)
+        let networkUseCase = NetworkUseCase()
+        let mainViewModel = MainViewModel(title: "", sceneCoordinator: sceneCoordinator, storage: storage, networkUseCase: networkUseCase)
+        
         let mainScene = Scene.main(mainViewModel)
         
         sceneCoordinator.transition(to: mainScene, using: .root, animated: false)

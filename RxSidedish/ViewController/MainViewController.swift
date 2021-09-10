@@ -41,7 +41,7 @@ class MainViewController: UIViewController, ViewModelBindableType {
             .bind(to: viewModel.detailAction.inputs)
             .disposed(by: rx.disposeBag)
         
-        //TODO: -
+        //MARK: -
         viewModel.fetchSidedishes()
             .subscribe{ _ in }
             .disposed(by: rx.disposeBag)

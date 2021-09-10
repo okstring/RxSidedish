@@ -18,7 +18,7 @@ class DetailViewModel: CommonViewModel {
     var thumbnailImagesURL: Observable<String>
     var detailSectionImageURL: Observable<String>
     
-    init(title: String, sceneCoordinator: SceneCoordinatorType, storage: SidedishStorageType, networkManager: Networkable, detailHash: String) {
+    init(title: String, sceneCoordinator: SceneCoordinatorType, storage: SidedishStorageType, networkUseCase: NetworkUseCase, detailHash: String) {
         
         let fetching = PublishSubject<Void>()
         
@@ -29,8 +29,8 @@ class DetailViewModel: CommonViewModel {
         fetching
             .asObservable()
             .debug()
-            .flatMap{ networkManager.get(type: DetailBody.self, endpoint: .detail(detailHash)) }
-            .map({ ViewDetailSidedishItem(title: title, item: $0.data) })
+            .flatMap{ networkUseCase.getDetailSideDishItem(hash: detailHash) }
+            .map({ ViewDetailSidedishItem(title: title, item: $0) })
             .subscribe(onNext: item.onNext)
             .disposed(by: disposeBag)
         
@@ -44,6 +44,6 @@ class DetailViewModel: CommonViewModel {
             .map({ $0.detailSectionImagesURL })
             .flatMap({ Observable.from($0) })
         
-        super.init(title: title, sceneCoordinator: sceneCoordinator, storage: storage, networkManager: networkManager)
+        super.init(title: title, sceneCoordinator: sceneCoordinator, storage: storage, networkUseCase: networkUseCase)
     }
 }

@@ -51,7 +51,7 @@ class MainViewModel: CommonViewModel {
     lazy var detailAction: Action<SidedishItem, Void> = {
         return Action { item in
             
-            let detailViewModel = DetailViewModel(title: item.title, sceneCoordinator: self.sceneCoordinator, storage: self.storage, networkManager: self.networkManager, detailHash: item.detailHash)
+            let detailViewModel = DetailViewModel(title: item.title, sceneCoordinator: self.sceneCoordinator, storage: self.storage, networkUseCase: self.networkUseCase, detailHash: item.detailHash)
             
             let detailScene = Scene.detail(detailViewModel)
             
@@ -60,11 +60,8 @@ class MainViewModel: CommonViewModel {
     }()
     
     func fetchSidedishes() -> Observable<[MainSection]> {
-        Observable.zip(
-            ServerAPI.mainCategories.map {
-                networkManager.get(type: MainBody.self, endpoint: $0)
-            })
-            .map({ $0.map{ $0.mainItems } })
+        
+        networkUseCase.getSidedishItems()
             .flatMap(storage.allUpdateSidedish)
             .asObservable()
     }

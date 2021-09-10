@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ViewDetailSidedishItem {
+struct ViewDetailSidedishItem: Equatable {
     var title: String
     var thumbnailImagesURL: [String]
     let productDescription: String

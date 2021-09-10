@@ -13,4 +13,19 @@ target 'RxSidedish' do
   pod 'RxDataSources'
   pod 'RxViewController'
   pod 'Alamofire'
+  pod 'RxBlocking'
+end
+
+
+target 'RxSidedishTests' do
+  use_frameworks!
+
+  pod 'RxSwift'
+  pod 'RxCocoa'
+  pod 'Action'
+  pod 'NSObject+Rx'
+  pod 'RxDataSources'
+  pod 'RxViewController'
+  pod 'Alamofire'
+  pod 'RxBlocking'
 end
