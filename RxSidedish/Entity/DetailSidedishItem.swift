@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct DetailSidedishItem: Codable {
+struct DetailSidedishItem: Codable, Equatable {
     let topImageURL: String
     let subTopImages: [String]
     var thumbnailImagesURL: [String] {

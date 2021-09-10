@@ -13,7 +13,7 @@ class DetailViewModel: CommonViewModel {
     var disposeBag = DisposeBag()
     
     var fetchItem: AnyObserver<Void>
-    var item: Observable<(String, DetailSidedishItem)>
+    var item: Observable<(ViewDetailSidedishItem)>
     
     init(title: String, sceneCoordinator: SceneCoordinatorType, storage: SidedishStorageType, networkManager: Networkable, detailHash: String) {
         
@@ -25,7 +25,7 @@ class DetailViewModel: CommonViewModel {
             .asObservable()
             .debug()
             .flatMap{ networkManager.get(type: DetailBody.self, endpoint: .detail(detailHash)) }
-            .map({ (title, $0.data) })
+            .map({ ViewDetailSidedishItem(title: title, item: $0.data) })
         
         super.init(title: title, sceneCoordinator: sceneCoordinator, storage: storage, networkManager: networkManager)
     }

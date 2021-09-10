@@ -15,8 +15,8 @@ class DescriptionView: UIView {
     @IBOutlet weak var deliveryInfo: UILabel!
     @IBOutlet weak var deliveryFee: UILabel!
     
-    func configure(title: String?, item: DetailSidedishItem) {
-        self.titleLabel.text = title
+    func configure(item: ViewDetailSidedishItem) {
+        self.titleLabel.text = item.title
         self.sidedishDescription.text = item.productDescription
         self.price.text = item.price
         self.point.text = item.point

@@ -33,12 +33,12 @@ class DetailViewController: UIViewController, ViewModelBindableType {
             .disposed(by: rx.disposeBag)
         
         viewModel.item
-            .subscribe(onNext: { [weak self] title, item in
-                self?.descriptionView.configure(title: title, item: item)
+            .subscribe(onNext: { [weak self] item in
+                self?.descriptionView.configure(item: item)
             }).disposed(by: rx.disposeBag)
         
         viewModel.item
-            .map({ $1.thumbnailImagesURL })
+            .map({ $0.thumbnailImagesURL })
             .flatMap({ Observable.from($0) })
             .flatMap({ ImageLoader.load(from: $0) })
             .subscribe(onNext: { [weak self] image in
@@ -46,7 +46,7 @@ class DetailViewController: UIViewController, ViewModelBindableType {
             }).disposed(by: rx.disposeBag)
         
         viewModel.item
-            .map({ $1.detailSectionImagesURL })
+            .map({ $0.detailSectionImagesURL })
             .flatMap({ Observable.from($0) })
             .flatMap({ ImageLoader.load(from: $0) }) //MARK: - 뷰 모델로 옮길수 있지 않을까?
             .subscribe(onNext: { [weak self] image in
