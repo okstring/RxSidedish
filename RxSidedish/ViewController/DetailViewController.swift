@@ -40,7 +40,7 @@ class DetailViewController: UIViewController, ViewModelBindableType {
         viewModel.item
             .map({ $1.thumbnailImagesURL })
             .flatMap({ Observable.from($0) })
-            .flatMap({ ImageLoader.rxLoad(from: $0) })
+            .flatMap({ ImageLoader.load(from: $0) })
             .subscribe(onNext: { [weak self] image in
                 self?.thumbnailStackView.addArrangedImageView(image: image, width: self?.view.bounds.width)
             }).disposed(by: rx.disposeBag)
@@ -48,7 +48,7 @@ class DetailViewController: UIViewController, ViewModelBindableType {
         viewModel.item
             .map({ $1.detailSectionImagesURL })
             .flatMap({ Observable.from($0) })
-            .flatMap({ ImageLoader.rxLoad(from: $0) }) //MARK: - 뷰 모델로 옮길수 있지 않을까?
+            .flatMap({ ImageLoader.load(from: $0) }) //MARK: - 뷰 모델로 옮길수 있지 않을까?
             .subscribe(onNext: { [weak self] image in
                 self?.detailImageStackView.addArrangedImageView(image: image, width: self?.view.bounds.width)
             }).disposed(by: rx.disposeBag)

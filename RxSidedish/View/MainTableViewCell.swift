@@ -55,7 +55,7 @@ class MainTableViewCell: UITableViewCell {
     
     func loadImage(imageURL: String) {
         let imageWidth = self.sidedishImageView.bounds.width
-        downloadDisposable = ImageLoader.rxLoad(from: imageURL)
+        downloadDisposable = ImageLoader.load(from: imageURL)
             .drive(onNext: { [weak self] image in
                 self?.sidedishImageView.image = image?.resize(newWidth: imageWidth)
             })

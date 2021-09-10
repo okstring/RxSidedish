@@ -13,34 +13,7 @@ import RxCocoa
 
 final class ImageLoader {
     static private let cacheURL = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)[0]
-    static func load(from imageURL: String, completionHandler: @escaping (UIImage?) -> ()) -> DownloadRequest? {
-        guard let fileName = URL(string: imageURL)?.lastPathComponent else {
-            return nil
-        }
-
-        if let cache = availableCache(of: fileName) {
-            let image = UIImage(contentsOfFile: cache)
-
-            DispatchQueue.main.async {
-                completionHandler(image)
-                return
-            }
-        }
-
-        let request = downloadRequest(of: imageURL, fileName: fileName)
-        request.responseURL { response in
-            if response.error == nil, let filePath = response.fileURL?.path {
-                let image = UIImage(contentsOfFile: filePath)
-
-                DispatchQueue.main.async {
-                    completionHandler(image)
-                }
-            }
-        }
-        return request
-    }
-    
-    static func rxLoad(from imageURL: String) -> Driver<UIImage?> {
+    static func load(from imageURL: String) -> Driver<UIImage?> {
         return Observable.create{ emitter in
             guard let fileName = URL(string: imageURL)?.lastPathComponent else {
                 emitter.onError(NetworkError.imageURL)
