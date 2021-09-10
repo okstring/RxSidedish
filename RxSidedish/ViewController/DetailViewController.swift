@@ -32,23 +32,19 @@ class DetailViewController: UIViewController, ViewModelBindableType {
             .bind(to: viewModel.fetchItem)
             .disposed(by: rx.disposeBag)
         
-        viewModel.item
+        viewModel.sidedishItem
             .subscribe(onNext: { [weak self] item in
                 self?.descriptionView.configure(item: item)
             }).disposed(by: rx.disposeBag)
         
-        viewModel.item
-            .map({ $0.thumbnailImagesURL })
-            .flatMap({ Observable.from($0) })
+        viewModel.thumbnailImagesURL
             .flatMap({ ImageLoader.load(from: $0) })
             .subscribe(onNext: { [weak self] image in
                 self?.thumbnailStackView.addArrangedImageView(image: image, width: self?.view.bounds.width)
             }).disposed(by: rx.disposeBag)
         
-        viewModel.item
-            .map({ $0.detailSectionImagesURL })
-            .flatMap({ Observable.from($0) })
-            .flatMap({ ImageLoader.load(from: $0) }) //MARK: - 뷰 모델로 옮길수 있지 않을까?
+        viewModel.detailSectionImageURL
+            .flatMap({ ImageLoader.load(from: $0) }) 
             .subscribe(onNext: { [weak self] image in
                 self?.detailImageStackView.addArrangedImageView(image: image, width: self?.view.bounds.width)
             }).disposed(by: rx.disposeBag)
