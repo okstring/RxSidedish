@@ -28,7 +28,6 @@ class DetailViewModel: CommonViewModel {
         
         fetching
             .asObservable()
-            .debug()
             .flatMap{ networkUseCase.getDetailSideDishItem(hash: detailHash) }
             .map({ ViewDetailSidedishItem(title: title, item: $0) })
             .subscribe(onNext: item.onNext)

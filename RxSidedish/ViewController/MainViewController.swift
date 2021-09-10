@@ -33,6 +33,13 @@ class MainViewController: UIViewController, ViewModelBindableType {
     }
     
     func bindViewModel() {
+        
+        rx.viewWillAppear
+            .take(1)
+            .map({ _ in })
+            .bind(to: viewModel.fetchItems)
+            .disposed(by: rx.disposeBag)
+        
         Observable.zip(mainTableView.rx.modelSelected(SidedishItem.self), mainTableView.rx.itemSelected)
             .do(onNext: { [unowned self] (_, indexPath) in
                 self.mainTableView.deselectRow(at: indexPath, animated: true)
@@ -41,10 +48,6 @@ class MainViewController: UIViewController, ViewModelBindableType {
             .bind(to: viewModel.detailAction.inputs)
             .disposed(by: rx.disposeBag)
         
-        //MARK: -
-        viewModel.fetchSidedishes()
-            .subscribe{ _ in }
-            .disposed(by: rx.disposeBag)
         
         mainTableView.rx
             .setDelegate(delegate)

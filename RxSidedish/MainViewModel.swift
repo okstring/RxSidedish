@@ -59,10 +59,23 @@ class MainViewModel: CommonViewModel {
         }
     }()
     
-    func fetchSidedishes() -> Observable<[MainSection]> {
+    let fetchItems: AnyObserver<Void>
+    
+    override init(title: String, sceneCoordinator: SceneCoordinatorType, storage: SidedishStorageType, networkUseCase: NetworkUseCase) {
         
-        networkUseCase.getSidedishItems()
-            .flatMap(storage.allUpdateSidedish)
+        let fetching = PublishSubject<Void>()
+        
+        let items = PublishSubject<[MainSection]>()
+        
+        fetchItems = fetching.asObserver()
+        
+        fetching
             .asObservable()
+            .flatMap({ networkUseCase.getSidedishItems() })
+            .flatMap( storage.allUpdateSidedish )
+            .subscribe(onNext: items.onNext)
+            .disposed(by: disposeBag)
+        
+        super.init(title: title, sceneCoordinator: sceneCoordinator, storage: storage, networkUseCase: networkUseCase)
     }
 }
