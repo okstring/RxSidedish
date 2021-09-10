@@ -44,7 +44,6 @@
 		22DB2C8526DF15CF00E81B40 /* SidedishStorageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DB2C8426DF15CF00E81B40 /* SidedishStorageType.swift */; };
 		22F2E60526DE73EB00152FFA /* SceneCoordinatorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F2E60426DE73EB00152FFA /* SceneCoordinatorType.swift */; };
 		22F2E60826DE745400152FFA /* SceneCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F2E60726DE745400152FFA /* SceneCoordinator.swift */; };
-		22F4D89826EB1F9800A7BB61 /* RxSidedishTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F4D89726EB1F9800A7BB61 /* RxSidedishTests.swift */; };
 		22F4D8A226EB215300A7BB61 /* RxDetailViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F4D8A126EB215300A7BB61 /* RxDetailViewModelTests.swift */; };
 		88974880A0465B552C184D4C /* Pods_RxSidedish.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4750835E4D1212543DCCD234 /* Pods_RxSidedish.framework */; };
 		A5B8C0748F709F070AD6ACA3 /* Pods_RxSidedishTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53D86085D9E7786B1E6405CD /* Pods_RxSidedishTests.framework */; };
@@ -101,7 +100,6 @@
 		22F2E60426DE73EB00152FFA /* SceneCoordinatorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneCoordinatorType.swift; sourceTree = "<group>"; };
 		22F2E60726DE745400152FFA /* SceneCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneCoordinator.swift; sourceTree = "<group>"; };
 		22F4D89526EB1F9800A7BB61 /* RxSidedishTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RxSidedishTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		22F4D89726EB1F9800A7BB61 /* RxSidedishTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxSidedishTests.swift; sourceTree = "<group>"; };
 		22F4D89926EB1F9800A7BB61 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		22F4D8A126EB215300A7BB61 /* RxDetailViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxDetailViewModelTests.swift; sourceTree = "<group>"; };
 		2758C0F9D661DBAFDD55D7E1 /* Pods-RxSidedish.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxSidedish.debug.xcconfig"; path = "Target Support Files/Pods-RxSidedish/Pods-RxSidedish.debug.xcconfig"; sourceTree = "<group>"; };
@@ -280,7 +278,6 @@
 		22F4D89626EB1F9800A7BB61 /* RxSidedishTests */ = {
 			isa = PBXGroup;
 			children = (
-				22F4D89726EB1F9800A7BB61 /* RxSidedishTests.swift */,
 				22F4D8A126EB215300A7BB61 /* RxDetailViewModelTests.swift */,
 				22F4D89926EB1F9800A7BB61 /* Info.plist */,
 			);
@@ -533,7 +530,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				22F4D89826EB1F9800A7BB61 /* RxSidedishTests.swift in Sources */,
 				22F4D8A226EB215300A7BB61 /* RxDetailViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
