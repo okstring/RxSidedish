@@ -20,7 +20,7 @@ final class ImageLoader {
                 return Disposables.create()
             }
             
-            if let cache = availableCache(of: fileName) {
+            if let cache = hasCache(fileName: fileName) {
                 let image = UIImage(contentsOfFile: cache)
                 
                 emitter.onNext(image)
@@ -40,7 +40,7 @@ final class ImageLoader {
         .asDriver(onErrorJustReturn: nil)
     }
     
-    static private func availableCache(of fileName: String) -> String? {
+    static private func hasCache(fileName: String) -> String? {
         let expectedPath = cacheURL.path + "/\(fileName)"
         return FileManager.default.fileExists(atPath: expectedPath) ? expectedPath : nil
     }
