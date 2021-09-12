@@ -66,9 +66,3 @@ struct SidedishItem: Codable, Equatable, IdentifiableType {
         case sPrice = "s_price"
     }
 }
-
-extension SidedishItem {
-    static func EMPTY(dummyID: String) -> SidedishItem {
-        return SidedishItem(detailHash: dummyID, imageURL: "", alt: "", title: "", itemDescription: "", sPrice: "")
-    }
-}
