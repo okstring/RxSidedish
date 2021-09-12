@@ -104,6 +104,7 @@ override func prepareForReuse() {
 override func prepareForReuse() {
     super.prepareForReuse()
     downloadDisposable?.dispose()
+    sidedishImageView.image = nil
 }
 
 func loadImage(imageURL: String) {
