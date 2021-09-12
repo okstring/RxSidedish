@@ -15,8 +15,7 @@ class RxMainViewModelTests: XCTestCase {
     
     var viewModel: MainViewModel!
     var sceneCoordinator: SceneCoordinatorType!
-    var storage: SidedishStorage!
-    var networkUseCase: SidedishUseCase!
+    var sidedishUseCase: SidedishUseCase!
     
     override func setUp() {
         
@@ -25,20 +24,19 @@ class RxMainViewModelTests: XCTestCase {
         window.rootViewController = VC
         
         sceneCoordinator = SceneCoordinator(window: window)
-        storage = SidedishStorage()
-        networkUseCase = SidedishUseCase()
+        sidedishUseCase = SidedishUseCase()
         
         viewModel = MainViewModel(title: "",
                                   sceneCoordinator: sceneCoordinator,
-                                  storage: storage,
-                                  networkUseCase: networkUseCase)
+                                  sidedishUseCase: sidedishUseCase)
     }
     
     func test_SidedishesFetch() {
         viewModel.fetchItems.onNext(())
-        
-        let fetched = try! viewModel.storage.sidedishesList().toBlocking().first()!
+
+        let fetched = try! viewModel.mainSections.toBlocking().first()!
         
         XCTAssertEqual(fetched.count == 3, true)
+        XCTAssertEqual(fetched.flatMap({ $0.items }).count > 0, true)
     }
 }
