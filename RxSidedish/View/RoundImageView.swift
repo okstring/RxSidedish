@@ -10,7 +10,7 @@ import UIKit
 @IBDesignable
 final class RoundImageView: UIImageView {
     
-    @IBInspectable var cornerRadius: Bool = false {
+    @IBInspectable private var cornerRadius: Bool = false {
         didSet {
             layer.cornerRadius = frame.width / 10
         }

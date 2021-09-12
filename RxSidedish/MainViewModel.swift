@@ -11,7 +11,7 @@ import RxDataSources
 import Action
 
 final class MainViewModel: CommonViewModel {
-    let disposeBag = DisposeBag()
+    private let disposeBag = DisposeBag()
     
     let dataSource: RxTableViewSectionedAnimatedDataSource<MainSection> = {
         let ds = RxTableViewSectionedAnimatedDataSource<MainSection> { (dataSource, tableView, indexPath, sidedishItem) -> UITableViewCell in

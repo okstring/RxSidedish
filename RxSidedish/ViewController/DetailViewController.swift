@@ -24,8 +24,6 @@ final class DetailViewController: UIViewController, ViewModelBindableType {
     }
     
     func bindViewModel() {
-        //MARK: - navigationController가 왜 없을까?
-        
         rx.viewWillAppear
             .take(1)
             .map{ _ in }

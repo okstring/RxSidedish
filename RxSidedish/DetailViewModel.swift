@@ -10,7 +10,7 @@ import RxSwift
 import RxCocoa
 
 final class DetailViewModel: CommonViewModel {
-    var disposeBag = DisposeBag()
+    private var disposeBag = DisposeBag()
     
     var fetchItem: AnyObserver<Void>
     var sidedishItem: Observable<(ViewDetailSidedishItem)>

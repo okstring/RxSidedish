@@ -8,7 +8,7 @@
 import UIKit
 
 final class MainTableViewDelegate: NSObject {
-    var viewModel: MainViewModel
+    private var viewModel: MainViewModel
     
     init(viewModel: MainViewModel) {
         self.viewModel = viewModel

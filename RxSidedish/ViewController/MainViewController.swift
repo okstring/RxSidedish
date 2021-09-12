@@ -16,7 +16,7 @@ final class MainViewController: UIViewController, ViewModelBindableType {
     
     var viewModel: MainViewModel!
     
-    lazy var delegate = MainTableViewDelegate(viewModel: viewModel)
+    lazy private var delegate = MainTableViewDelegate(viewModel: viewModel)
     
     override func viewDidLoad() {
         super.viewDidLoad()

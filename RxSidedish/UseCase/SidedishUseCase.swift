@@ -9,7 +9,7 @@ import Foundation
 import RxSwift
 
 final class SidedishUseCase {
-    let networkManager: Networkable
+    private let networkManager: Networkable
     
     init(networkManager: Networkable = NetworkManager()) {
         self.networkManager = networkManager
