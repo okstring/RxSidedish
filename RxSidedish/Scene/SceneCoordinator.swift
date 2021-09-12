@@ -11,7 +11,7 @@ import RxCocoa
 
 extension UIViewController {
     var sceneViewController: UIViewController {
-        return self.children.first ?? self // 실제 표시되어있는 화면을 표시하는 것
+        return self.children.first ?? self
     }
 }
 
@@ -44,13 +44,12 @@ class SceneCoordinator: SceneCoordinatorType {
             
             nav.rx.willShow
                 .subscribe(onNext: { [unowned self] event in
-                    ///backbutton과 애니메이션 해결(뒤로갈때도 호출되는데 다음 행선지를 알 수 있는 event로 해결)
                     self.currentVC = event.viewController.sceneViewController
                 })
                 .disposed(by: bag)
             
             nav.pushViewController(target, animated: animated)
-            currentVC = target.sceneViewController // 왜 두번 하는거 같지 🤔
+            currentVC = target.sceneViewController
             
             subject.onCompleted()
         }
