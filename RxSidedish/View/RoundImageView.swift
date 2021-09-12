@@ -12,7 +12,7 @@ class RoundImageView: UIImageView {
     
     @IBInspectable var cornerRadius: Bool = false {
         didSet {
-            layer.cornerRadius = frame.width / 2
+            layer.cornerRadius = frame.width / 10
         }
     }
 }
