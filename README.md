@@ -8,7 +8,7 @@
 
 
 
-<img align="left" src="./images/RxSidedish.gif">
+![RxSidedish](./images/RxSidedish.gif)
 
 
 
@@ -30,11 +30,7 @@
 
 ## Architecture
 
-
-
-<img align="left" src="./images/architecture.png">
-
-
+![architecture](./images/architecture.png)
 
 
 
@@ -59,7 +55,9 @@
 
 MainViewController의 `MainTableView` cell 에는 음식 이미지가 들어간다. 서버에서 받아오는 이미지의 크기는 `800x800`에 가까운데 cell imageView 영역에 들어가는 크기에 비하면 낭비가 아닐 수 없다. 방법을 찾다가 image resize를 통해서 memory를 절약할 수 있었다. 밑에는 실제로 크게 줄어든 메모리를 볼 수 있다. 화면에 표시되는 이미지가 많아지고 서버에서 받아오는 이미지 크기가 클 수록 그 차이는 커질 것이다.
 
-<img align="left" src="./images/resizeImage.png">
+
+
+![resizeImage](./images/resizeImage.png)
 
 
 
@@ -98,7 +96,9 @@ override func prepareForReuse() {
 
 
 
-<img align="left" src="./images/disposeDownLoadRequest.png">
+![disposeDownLoadRequest](./images/disposeDownLoadRequest.png)
+
+
 
 ```swift
 override func prepareForReuse() {
@@ -205,15 +205,17 @@ func test_SidedishesFetch() {
 
 처음에 비동기식 데이터 스트림 프로그래밍이 익숙하지 않았을때는 `Observable<Observable<MainSection>>` 모양의 요상한 타입이 나오기도 했었다. 이렇게 생각하게 된 이유가 서버 요칭 시 `main`, `soup`, `side`를 따로 요청해야 하는데 결과를 받을 때 그 순서가 보장을 못 받을 것 같다는 우려가 있었다.
 
-<img align="left" src="./images/wrongRxConcept.png">
+
+
+![wrongRxConcept](./images/wrongRxConcept.png)
 
 
 
 이는 잘못된 생각이었고 공부 후 순서가 보장이 가능하다는 점을 알게 됐다. `concat`, `merge` 등 다양한 Operators도 이 때 활용하면 알맞게 활용할 수 있다.
 
-<img align="left" width="500" src="./images/merge.png">
+![merge](./images/merge.png)
 
-<img align="left" width="500" src="./images/concat.png">
+![concat](./images/concat.png)
 
 
 
