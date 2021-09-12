@@ -41,8 +41,8 @@
 		22BF2B0F26DD13AF009A8B51 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22BF2B0D26DD13AF009A8B51 /* Main.storyboard */; };
 		22BF2B1126DD13B2009A8B51 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22BF2B1026DD13B2009A8B51 /* Assets.xcassets */; };
 		22BF2B1426DD13B2009A8B51 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22BF2B1226DD13B2009A8B51 /* LaunchScreen.storyboard */; };
-		22DB2C7E26DF0F4800E81B40 /* SidedishStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DB2C7D26DF0F4800E81B40 /* SidedishStorage.swift */; };
-		22DB2C8526DF15CF00E81B40 /* SidedishStorageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DB2C8426DF15CF00E81B40 /* SidedishStorageType.swift */; };
+		22E430EF26ED9EDC006CA79A /* MainSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E430EE26ED9EDC006CA79A /* MainSection.swift */; };
+		22E430FB26ED9F2D006CA79A /* MainCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E430FA26ED9F2D006CA79A /* MainCategory.swift */; };
 		22F2E60526DE73EB00152FFA /* SceneCoordinatorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F2E60426DE73EB00152FFA /* SceneCoordinatorType.swift */; };
 		22F2E60826DE745400152FFA /* SceneCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F2E60726DE745400152FFA /* SceneCoordinator.swift */; };
 		22F4D8A226EB215300A7BB61 /* RxDetailViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F4D8A126EB215300A7BB61 /* RxDetailViewModelTests.swift */; };
@@ -97,8 +97,8 @@
 		22BF2B1026DD13B2009A8B51 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		22BF2B1326DD13B2009A8B51 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		22BF2B1526DD13B2009A8B51 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		22DB2C7D26DF0F4800E81B40 /* SidedishStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidedishStorage.swift; sourceTree = "<group>"; };
-		22DB2C8426DF15CF00E81B40 /* SidedishStorageType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidedishStorageType.swift; sourceTree = "<group>"; };
+		22E430EE26ED9EDC006CA79A /* MainSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSection.swift; sourceTree = "<group>"; };
+		22E430FA26ED9F2D006CA79A /* MainCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCategory.swift; sourceTree = "<group>"; };
 		22F2E60426DE73EB00152FFA /* SceneCoordinatorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneCoordinatorType.swift; sourceTree = "<group>"; };
 		22F2E60726DE745400152FFA /* SceneCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneCoordinator.swift; sourceTree = "<group>"; };
 		22F4D89526EB1F9800A7BB61 /* RxSidedishTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RxSidedishTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -143,6 +143,8 @@
 		221E9B1526DDCD7300FCF81C /* Entity */ = {
 			isa = PBXGroup;
 			children = (
+				22E430EE26ED9EDC006CA79A /* MainSection.swift */,
+				22E430FA26ED9F2D006CA79A /* MainCategory.swift */,
 				221E9B2426DDD77A00FCF81C /* MainBody.swift */,
 				221E9B1626DDCEA200FCF81C /* SidedishItem.swift */,
 				22B54BF626E797C700F76088 /* DetailBody.swift */,
@@ -216,15 +218,6 @@
 			path = Delegate;
 			sourceTree = "<group>";
 		};
-		229E7E1826DE8BD50091BE43 /* Service */ = {
-			isa = PBXGroup;
-			children = (
-				22DB2C7D26DF0F4800E81B40 /* SidedishStorage.swift */,
-				22DB2C8426DF15CF00E81B40 /* SidedishStorageType.swift */,
-			);
-			path = Service;
-			sourceTree = "<group>";
-		};
 		22BF2AFB26DD13AF009A8B51 = {
 			isa = PBXGroup;
 			children = (
@@ -250,7 +243,6 @@
 			children = (
 				22BF2B0726DD13AF009A8B51 /* AppDelegate.swift */,
 				22BF2B0926DD13AF009A8B51 /* SceneDelegate.swift */,
-				229E7E1826DE8BD50091BE43 /* Service */,
 				222E078E26E0C40900F53227 /* View */,
 				226B8BC126E6627B00F79865 /* Delegate */,
 				223F3F8426DDFDEE005AFBB0 /* Scene */,
@@ -501,7 +493,6 @@
 				226B8BC326E6629200F79865 /* MainTableViewDelegate.swift in Sources */,
 				223F3F8126DDF3DF005AFBB0 /* DetailSidedishItem.swift in Sources */,
 				223F3F8926DDFFAF005AFBB0 /* Scene.swift in Sources */,
-				22DB2C7E26DF0F4800E81B40 /* SidedishStorage.swift in Sources */,
 				22B54BEA26E7661F00F76088 /* DescriptionView.swift in Sources */,
 				220AADC426EB5716008DB9ED /* ViewDetailSidedishItem.swift in Sources */,
 				222E079026E0C43B00F53227 /* MainTableViewCell.swift in Sources */,
@@ -515,13 +506,14 @@
 				220AADC926EB8817008DB9ED /* NetworkUseCase.swift in Sources */,
 				223F3F8D26DE0023005AFBB0 /* MainViewModel.swift in Sources */,
 				221E9B1726DDCEA200FCF81C /* SidedishItem.swift in Sources */,
+				22E430FB26ED9F2D006CA79A /* MainCategory.swift in Sources */,
 				224BE9CB26E61A8400EC99C6 /* MainTableViewHeaderView.swift in Sources */,
 				22F2E60526DE73EB00152FFA /* SceneCoordinatorType.swift in Sources */,
 				223F3F7926DDE668005AFBB0 /* ImageLoader.swift in Sources */,
 				22BF2B0826DD13AF009A8B51 /* AppDelegate.swift in Sources */,
-				22DB2C8526DF15CF00E81B40 /* SidedishStorageType.swift in Sources */,
 				220E095E26DD1A30003C72AE /* NetworkManager.swift in Sources */,
 				22B54BE726E7660900F76088 /* ThumbnailStackView.swift in Sources */,
+				22E430EF26ED9EDC006CA79A /* MainSection.swift in Sources */,
 				22BF2B0A26DD13AF009A8B51 /* SceneDelegate.swift in Sources */,
 				223F3F9026DE002B005AFBB0 /* DetailViewModel.swift in Sources */,
 				222E079326E0C90300F53227 /* NSObject+ClassNameProtocol.swift in Sources */,

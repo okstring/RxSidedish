@@ -15,9 +15,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         let sceneCoordinator = SceneCoordinator(window: window!)
-        let storage = SidedishStorage()
         let networkUseCase = NetworkUseCase()
-        let mainViewModel = MainViewModel(title: "", sceneCoordinator: sceneCoordinator, storage: storage, networkUseCase: networkUseCase)
+        let mainViewModel = MainViewModel(title: "", sceneCoordinator: sceneCoordinator, networkUseCase: networkUseCase)
         
         let mainScene = Scene.main(mainViewModel)
         

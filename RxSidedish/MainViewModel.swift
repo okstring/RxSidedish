@@ -10,23 +10,6 @@ import RxSwift
 import RxDataSources
 import Action
 
-struct MainSection {
-    var header: String
-    var category: String
-    var items: [SidedishItem]
-}
-
-extension MainSection: AnimatableSectionModelType {
-    var identity: String {
-        return header
-    }
-    
-    init(original: MainSection, items: [SidedishItem]) {
-        self = original
-        self.items = items
-    }
-}
-
 class MainViewModel: CommonViewModel {
     let disposeBag = DisposeBag()
     
@@ -44,14 +27,10 @@ class MainViewModel: CommonViewModel {
         return ds
     }()
     
-    var mainSections: Observable<[MainSection]> {
-        return storage.sidedishesList()
-    }
-    
     lazy var detailAction: Action<SidedishItem, Void> = {
         return Action { item in
             
-            let detailViewModel = DetailViewModel(title: item.title, sceneCoordinator: self.sceneCoordinator, storage: self.storage, networkUseCase: self.networkUseCase, detailHash: item.detailHash)
+            let detailViewModel = DetailViewModel(title: item.title, sceneCoordinator: self.sceneCoordinator, networkUseCase: self.networkUseCase, detailHash: item.detailHash)
             
             let detailScene = Scene.detail(detailViewModel)
             
@@ -60,8 +39,9 @@ class MainViewModel: CommonViewModel {
     }()
     
     let fetchItems: AnyObserver<Void>
+    var mainSections: Observable<[MainSection]>
     
-    override init(title: String, sceneCoordinator: SceneCoordinatorType, storage: SidedishStorageType, networkUseCase: NetworkUseCase) {
+    override init(title: String, sceneCoordinator: SceneCoordinatorType, networkUseCase: NetworkUseCase) {
         
         let fetching = PublishSubject<Void>()
         
@@ -72,10 +52,12 @@ class MainViewModel: CommonViewModel {
         fetching
             .asObservable()
             .flatMap({ networkUseCase.getSidedishItems() })
-            .flatMap( storage.allUpdateSidedish )
+            .flatMap({ networkUseCase.makeMainSection(sidedishItems: $0) })
             .subscribe(onNext: items.onNext)
             .disposed(by: disposeBag)
         
-        super.init(title: title, sceneCoordinator: sceneCoordinator, storage: storage, networkUseCase: networkUseCase)
+        mainSections = items.asObservable()
+        
+        super.init(title: title, sceneCoordinator: sceneCoordinator, networkUseCase: networkUseCase)
     }
 }

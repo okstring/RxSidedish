@@ -18,7 +18,7 @@ class DetailViewModel: CommonViewModel {
     var thumbnailImagesURL: Observable<String>
     var detailSectionImageURL: Observable<String>
     
-    init(title: String, sceneCoordinator: SceneCoordinatorType, storage: SidedishStorageType, networkUseCase: NetworkUseCase, detailHash: String) {
+    init(title: String, sceneCoordinator: SceneCoordinatorType, networkUseCase: NetworkUseCase, detailHash: String) {
         
         let fetching = PublishSubject<Void>()
         
@@ -43,6 +43,6 @@ class DetailViewModel: CommonViewModel {
             .map({ $0.detailSectionImagesURL })
             .flatMap({ Observable.from($0) })
         
-        super.init(title: title, sceneCoordinator: sceneCoordinator, storage: storage, networkUseCase: networkUseCase)
+        super.init(title: title, sceneCoordinator: sceneCoordinator, networkUseCase: networkUseCase)
     }
 }

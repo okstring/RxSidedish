@@ -16,7 +16,6 @@ class NetworkUseCase {
     }
     
     func getSidedishItems() -> Observable<[[SidedishItem]]> {
-        
         return Observable.zip(
             ServerAPI.mainCategories.map {
                 networkManager.get(type: MainBody.self, endpoint: $0)
@@ -24,8 +23,21 @@ class NetworkUseCase {
             .map({ $0.map{ $0.mainItems } })
     }
     
-    func getDetailSideDishItem(hash: String) -> Observable<DetailSidedishItem> {
+    func makeMainSection(sidedishItems: [[SidedishItem]]) -> Observable<[MainSection]> {
         
+        return Observable.zip(Observable.just(Category.allCases), Observable.just(sidedishItems))
+            .flatMap { (items) -> Observable<[MainSection]> in
+                
+                let (categories, sidedishitems) = items
+                let mainSections = (0..<categories.count).map({ index in
+                    MainSection(header: categories[index].header, category: categories[index].categoryName, items: sidedishitems[index])
+                })
+                return Observable.just(mainSections)
+            }
+        
+    }
+    
+    func getDetailSideDishItem(hash: String) -> Observable<DetailSidedishItem> {
         return networkManager.get(type: DetailBody.self, endpoint: .detail(hash))
             .map({ $0.data })
     }
