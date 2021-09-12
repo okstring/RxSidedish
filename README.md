@@ -16,15 +16,15 @@
 
 ## 목차
 
-- Architecture
-- 특징(사용 기술)
-- 리팩토링 내용(고민과 해결)
-    - 부드러운 tableView scrolling - Image Practices 리서치
-    - ViewModel 역할
-    - Unit Test
-    - request 고민(main, soup, side)
-    - tableView header 구현 리서치
-- References
+- [Architecture](https://github.com/okstring/RxSidedish#architecture)
+- [특징(사용 기술)](https://github.com/okstring/RxSidedish#특징사용-기술)
+- [리팩토링 내용(고민과 해결)](https://github.com/okstring/RxSidedish#리팩토링-내용고민과-해결)
+    - [부드러운 tableView scrolling - Image Practices 리서치](https://github.com/okstring/RxSidedish#부드러운-tableview-scrolling---image-practices-리서치)
+    - [ViewModel 역할](https://github.com/okstring/RxSidedish#viewmodel-역할)
+    - [Unit Test](https://github.com/okstring/RxSidedish#unit-test)
+    - [request 고민(main, soup, side)](https://github.com/okstring/RxSidedish#request-고민main-soup-side)
+    - [tableView header 구현 리서치](https://github.com/okstring/RxSidedish#tableview-header-구현-리서치)
+- [References](https://github.com/okstring/RxSidedish#reference)
 
 
 
