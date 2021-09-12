@@ -11,7 +11,7 @@ import RxSwift
 import RxCocoa
 import RxViewController
 
-class MainViewController: UIViewController, ViewModelBindableType {
+final class MainViewController: UIViewController, ViewModelBindableType {
     @IBOutlet weak var mainTableView: UITableView!
     
     var viewModel: MainViewModel!

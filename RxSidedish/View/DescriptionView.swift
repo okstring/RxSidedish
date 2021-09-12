@@ -7,7 +7,7 @@
 
 import UIKit
 
-class DescriptionView: UIView {
+final class DescriptionView: UIView {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var sidedishDescription: UILabel!
     @IBOutlet weak var price: UILabel!

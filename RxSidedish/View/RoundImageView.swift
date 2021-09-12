@@ -8,7 +8,7 @@
 import UIKit
 
 @IBDesignable
-class RoundImageView: UIImageView {
+final class RoundImageView: UIImageView {
     
     @IBInspectable var cornerRadius: Bool = false {
         didSet {

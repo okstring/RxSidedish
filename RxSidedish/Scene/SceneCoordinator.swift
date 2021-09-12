@@ -15,7 +15,7 @@ extension UIViewController {
     }
 }
 
-class SceneCoordinator: SceneCoordinatorType {
+final class SceneCoordinator: SceneCoordinatorType {
     private let bag = DisposeBag()
     
     private var window: UIWindow

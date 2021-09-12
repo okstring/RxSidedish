@@ -149,6 +149,7 @@
 				221E9B1626DDCEA200FCF81C /* SidedishItem.swift */,
 				22B54BF626E797C700F76088 /* DetailBody.swift */,
 				223F3F8026DDF3DF005AFBB0 /* DetailSidedishItem.swift */,
+				220AADC326EB5716008DB9ED /* ViewDetailSidedishItem.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -192,7 +193,6 @@
 			children = (
 				223F3F8C26DE0023005AFBB0 /* MainViewModel.swift */,
 				223F3F8F26DE002B005AFBB0 /* DetailViewModel.swift */,
-				220AADC326EB5716008DB9ED /* ViewDetailSidedishItem.swift */,
 				222E078A26E0C1F000F53227 /* CommonViewModel.swift */,
 			);
 			name = ViewModel;

@@ -11,7 +11,7 @@ import RxSwift
 import RxViewController
 import NSObject_Rx
 
-class DetailViewController: UIViewController, ViewModelBindableType {
+final class DetailViewController: UIViewController, ViewModelBindableType {
     var viewModel: DetailViewModel!
     
     @IBOutlet weak var thumbnailStackView: ThumbnailStackView!

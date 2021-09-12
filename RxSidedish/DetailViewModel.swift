@@ -9,7 +9,7 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-class DetailViewModel: CommonViewModel {
+final class DetailViewModel: CommonViewModel {
     var disposeBag = DisposeBag()
     
     var fetchItem: AnyObserver<Void>

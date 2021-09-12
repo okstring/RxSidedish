@@ -7,7 +7,7 @@
 
 import UIKit
 
-class DetailImageStackView: UIStackView {
+final class DetailImageStackView: UIStackView {
     func addArrangedImageView(image: UIImage?, width: CGFloat?) {
         guard let width = width, let image = image else {
             return

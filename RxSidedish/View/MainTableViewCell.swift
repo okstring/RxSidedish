@@ -9,7 +9,7 @@ import UIKit
 import Alamofire
 import RxSwift
 
-class MainTableViewCell: UITableViewCell {
+final class MainTableViewCell: UITableViewCell {
     @IBOutlet weak var sidedishTitle: UILabel!
     @IBOutlet weak var sidedishDescription: UILabel!
     @IBOutlet weak var sidedishImageView: RoundImageView!

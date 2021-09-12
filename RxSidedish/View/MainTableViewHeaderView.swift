@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MainTableViewHeaderView: UITableViewHeaderFooterView {
+final class MainTableViewHeaderView: UITableViewHeaderFooterView {
     private let categoryLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 15)

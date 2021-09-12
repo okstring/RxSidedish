@@ -10,7 +10,7 @@ import RxSwift
 import RxDataSources
 import Action
 
-class MainViewModel: CommonViewModel {
+final class MainViewModel: CommonViewModel {
     let disposeBag = DisposeBag()
     
     let dataSource: RxTableViewSectionedAnimatedDataSource<MainSection> = {

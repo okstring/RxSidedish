@@ -13,7 +13,7 @@ protocol Networkable {
     func get<T: Decodable>(type: T.Type, endpoint: ServerAPI.Endpoint) -> Observable<T>
 }
 
-class NetworkManager: Networkable {
+final class NetworkManager: Networkable {
     func get<T: Decodable>(type: T.Type,
                            endpoint: ServerAPI.Endpoint) -> Observable<T> {
         let url = "\(ServerAPI.baseURL)\(endpoint.path)"

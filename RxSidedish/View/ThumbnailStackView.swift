@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ThumbnailStackView: UIStackView {
+final class ThumbnailStackView: UIStackView {
     
     func addArrangedImageView(image: UIImage?, width: CGFloat?) {
         guard let width = width else  {

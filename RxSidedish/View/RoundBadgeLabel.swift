@@ -8,7 +8,7 @@
 import UIKit
 
 @IBDesignable
-class RoundBadgeLabel: UILabel {
+final class RoundBadgeLabel: UILabel {
     
     @IBInspectable var cornerRadius: Bool = false {
         didSet {

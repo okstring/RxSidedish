@@ -8,7 +8,7 @@
 import Foundation
 import RxSwift
 
-class SidedishUseCase {
+final class SidedishUseCase {
     let networkManager: Networkable
     
     init(networkManager: Networkable = NetworkManager()) {
@@ -24,10 +24,8 @@ class SidedishUseCase {
     }
     
     func makeMainSection(sidedishItems: [[SidedishItem]]) -> Observable<[MainSection]> {
-        
         return Observable.zip(Observable.just(Category.allCases), Observable.just(sidedishItems))
             .flatMap { (items) -> Observable<[MainSection]> in
-                
                 let (categories, sidedishitems) = items
                 let mainSections = (0..<categories.count).map({ index in
                     MainSection(header: categories[index].header, category: categories[index].categoryName, items: sidedishitems[index])
