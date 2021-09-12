@@ -12,11 +12,11 @@ import RxCocoa
 class CommonViewModel: NSObject {
     let title: Driver<String>
     let sceneCoordinator: SceneCoordinatorType
-    let networkUseCase: NetworkUseCase
+    let sidedishUseCase: SidedishUseCase
     
-    init(title: String, sceneCoordinator: SceneCoordinatorType, networkUseCase: NetworkUseCase) {
+    init(title: String, sceneCoordinator: SceneCoordinatorType, sidedishUseCase: SidedishUseCase) {
         self.title = Observable.just(title).asDriver(onErrorJustReturn: "")
         self.sceneCoordinator = sceneCoordinator
-        self.networkUseCase = networkUseCase
+        self.sidedishUseCase = sidedishUseCase
     }
 }

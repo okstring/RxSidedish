@@ -17,7 +17,7 @@ class RxDetailViewModelTests: XCTestCase {
     var viewModel: DetailViewModel!
     var sceneCoordinator: SceneCoordinatorType!
     var storage: SidedishStorage!
-    var networkUseCase: NetworkUseCase!
+    var networkUseCase: SidedishUseCase!
     
     override func setUp() {
         
@@ -27,7 +27,7 @@ class RxDetailViewModelTests: XCTestCase {
         
         sceneCoordinator = SceneCoordinator(window: window)
         storage = SidedishStorage()
-        networkUseCase = NetworkUseCase()
+        networkUseCase = SidedishUseCase()
         
         viewModel = DetailViewModel(title: "test",
                                     sceneCoordinator: sceneCoordinator,

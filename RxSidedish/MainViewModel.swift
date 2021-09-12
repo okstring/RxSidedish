@@ -30,7 +30,7 @@ class MainViewModel: CommonViewModel {
     lazy var detailAction: Action<SidedishItem, Void> = {
         return Action { item in
             
-            let detailViewModel = DetailViewModel(title: item.title, sceneCoordinator: self.sceneCoordinator, networkUseCase: self.networkUseCase, detailHash: item.detailHash)
+            let detailViewModel = DetailViewModel(title: item.title, sceneCoordinator: self.sceneCoordinator, sidedishUseCase: self.sidedishUseCase, detailHash: item.detailHash)
             
             let detailScene = Scene.detail(detailViewModel)
             
@@ -41,7 +41,7 @@ class MainViewModel: CommonViewModel {
     let fetchItems: AnyObserver<Void>
     var mainSections: Observable<[MainSection]>
     
-    override init(title: String, sceneCoordinator: SceneCoordinatorType, networkUseCase: NetworkUseCase) {
+    override init(title: String, sceneCoordinator: SceneCoordinatorType, sidedishUseCase: SidedishUseCase) {
         
         let fetching = PublishSubject<Void>()
         
@@ -51,13 +51,13 @@ class MainViewModel: CommonViewModel {
         
         fetching
             .asObservable()
-            .flatMap({ networkUseCase.getSidedishItems() })
-            .flatMap({ networkUseCase.makeMainSection(sidedishItems: $0) })
+            .flatMap({ sidedishUseCase.getSidedishItems() })
+            .flatMap({ sidedishUseCase.makeMainSection(sidedishItems: $0) })
             .subscribe(onNext: items.onNext)
             .disposed(by: disposeBag)
         
         mainSections = items.asObservable()
         
-        super.init(title: title, sceneCoordinator: sceneCoordinator, networkUseCase: networkUseCase)
+        super.init(title: title, sceneCoordinator: sceneCoordinator, sidedishUseCase: sidedishUseCase)
     }
 }
