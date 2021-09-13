@@ -36,7 +36,7 @@ class RxMainViewModelTests: XCTestCase {
     func test_SidedishesFetch() {
         viewModel.fetchItems.onNext(())
 
-        let fetched = try! viewModel.mainSections.toBlocking().first()!
+        let fetched = try! viewModel.mainSections.toBlocking(timeout: 5).first()!
         
         XCTAssertEqual(fetched.count == 3, true)
         XCTAssertEqual(fetched.flatMap({ $0.items }).count > 0, true)

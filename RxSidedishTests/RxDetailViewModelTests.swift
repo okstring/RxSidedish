@@ -36,7 +36,7 @@ class RxDetailViewModelTests: XCTestCase {
     func test_detailFetch() {
         viewModel.fetchItem.onNext(())
         
-        let fetched = try! viewModel.sidedishItem.toBlocking().first()!
+        let fetched = try! viewModel.sidedishItem.toBlocking(timeout: 5).first()!
         
         XCTAssertEqual(fetched.title == "test", true)
     }
