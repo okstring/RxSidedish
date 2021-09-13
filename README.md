@@ -262,16 +262,16 @@ class SessionManagerStub: SessionManagerProtocol {
       
       ...
       
-  func test_SidedishesFetch() {
-      networkManager.get(type: SidedishItem.self, endpoint: .main)
-          .subscribe(onNext: { _ in })
-          .disposed(by: DisposeBag())
-
-      let params = sessionManagerStub.requestParameters
-
-      XCTAssertEqual(try params?.url.asURL().absoluteString, "{해당 URL}")
-      XCTAssertEqual(params?.method, .get)
-  }
+    func test_fetchSidedishes() {
+        networkManager.get(type: SidedishItem.self, endpoint: .main)
+            .subscribe(onNext: { _ in })
+            .disposed(by: disposeBag)
+        
+        let params = sessionManagerStub.requestParameters
+        
+        XCTAssertEqual(try params?.url.asURL().absoluteString, "") // URL
+        XCTAssertEqual(params?.method, .get)
+    }
 ```
 
 이렇게 하면 협업 시 올바르지 않은 요청을 테스트를 통해 감지할 수 있다.
