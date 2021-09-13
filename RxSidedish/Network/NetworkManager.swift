@@ -1,5 +1,5 @@
 //
-//  APIService.swift
+//  NetworkManager.swift
 //  RxSidedish
 //
 //  Created by Issac on 2021/08/30.
@@ -14,12 +14,23 @@ protocol Networkable {
 }
 
 final class NetworkManager: Networkable {
+    let sessionManager: SessionManagerProtocol
+    
+    init(sessionManager: SessionManagerProtocol = AF) {
+        self.sessionManager = sessionManager
+    }
+    
     func get<T: Decodable>(type: T.Type,
                            endpoint: ServerAPI.Endpoint) -> Observable<T> {
         let url = "\(ServerAPI.baseURL)\(endpoint.path)"
-        return Observable.create() { emitter in
-            AF.request(url,
-                       method: .get)
+        return Observable.create() { [weak self] emitter in
+            self?.sessionManager.request(url,
+                                         method: .get,
+                                         parameters: nil,
+                                         encoding: URLEncoding.default,
+                                         headers: nil,
+                                         interceptor: nil,
+                                         requestModifier: nil)
                 .responseDecodable(of: type) { (dataResponse) in
                     guard let statusCode = dataResponse.response?.statusCode else {
                         return emitter.onError(NetworkError.internet)
