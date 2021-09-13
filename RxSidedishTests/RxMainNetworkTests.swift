@@ -12,7 +12,7 @@ import XCTest
 import RxSwift
 
 class StubDelegate: RequestDelegate {
-    var sessionConfiguration: URLSessionConfiguration = URLSessionConfiguration()
+    var sessionConfiguration: URLSessionConfiguration = URLSessionConfiguration.default
     var startImmediately: Bool = false
     func cleanup(after request: Request) {
     }
@@ -51,6 +51,7 @@ class RxMainNetworkTests: XCTestCase {
     override func setUp() {
         sessionManagerStub = SessionManagerStub()
         networkManager = NetworkManager(sessionManager: sessionManagerStub)
+        
     }
     
     func test_SidedishesFetch() {
