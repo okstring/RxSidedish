@@ -8,7 +8,7 @@
 
 
 
-![RxSidedish](./images/RxSidedish.gif)
+![RxSidedish](./images/RxSidedish-high.gif)
 
 
 
