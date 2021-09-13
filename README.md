@@ -333,7 +333,7 @@ mainTableView.rx
 
 [RxDataSources](https://github.com/RxSwiftCommunity/RxDataSources)
 
-[Dish Icon](https://www.flaticon.com/authors/monkik)
+[Dish Icon - Monkik](https://www.flaticon.com/authors/monkik)
 
 [iOS Memory Deep Dive](https://developer.apple.com/videos/play/wwdc2018/416/)
 
