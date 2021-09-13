@@ -8,6 +8,7 @@
 import XCTest
 @testable import RxSidedish
 @testable import Alamofire
+import RxBlocking
 
 import RxSwift
 
@@ -47,18 +48,19 @@ class SessionManagerStub: SessionManagerProtocol {
 class RxMainNetworkTests: XCTestCase {
     var networkManager: Networkable!
     var sessionManagerStub: SessionManagerStub!
+    var disposeBag: DisposeBag!
     
     override func setUp() {
         sessionManagerStub = SessionManagerStub()
         networkManager = NetworkManager(sessionManager: sessionManagerStub)
-        
+        disposeBag = DisposeBag()
     }
     
-    func test_SidedishesFetch() {
+    func test_fetchSidedishes() {
         networkManager.get(type: SidedishItem.self, endpoint: .main)
             .subscribe(onNext: { _ in })
-            .disposed(by: DisposeBag())
-
+            .disposed(by: disposeBag)
+        
         let params = sessionManagerStub.requestParameters
         
         XCTAssertEqual(try params?.url.asURL().absoluteString, "https://h3rb9c0ugl.execute-api.ap-northeast-2.amazonaws.com/develop/baminchan/main")
