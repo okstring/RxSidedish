@@ -28,6 +28,7 @@ final class MainTableViewCell: UITableViewCell {
         super.prepareForReuse()
         downloadDisposable?.dispose()
         sidedishImageView.image = nil
+        sidedishImageView.contentMode = .center
         eventBadge.isHidden = false
         launchingBadge.isHidden = false
     }
@@ -57,6 +58,7 @@ final class MainTableViewCell: UITableViewCell {
         let imageWidth = self.sidedishImageView.bounds.width
         downloadDisposable = ImageLoader.load(from: imageURL)
             .drive(onNext: { [weak self] image in
+                self?.sidedishImageView.contentMode = .scaleAspectFit
                 self?.sidedishImageView.image = image?.resize(newWidth: imageWidth)
             })
     }
