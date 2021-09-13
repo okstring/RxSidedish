@@ -22,6 +22,7 @@
     - [부드러운 tableView scrolling - Image Practices 리서치](https://github.com/okstring/RxSidedish#부드러운-tableview-scrolling---image-practices-리서치)
     - [ViewModel 역할](https://github.com/okstring/RxSidedish#viewmodel-역할)
     - [Unit Test](https://github.com/okstring/RxSidedish#unit-test)
+    - Network 없이 Network Request Test
     - [request 고민(main, soup, side)](https://github.com/okstring/RxSidedish#request-고민main-soup-side)
     - [tableView header 구현 리서치](https://github.com/okstring/RxSidedish#tableview-header-구현-리서치)
 - [References](https://github.com/okstring/RxSidedish#reference)
@@ -202,6 +203,83 @@ func test_SidedishesFetch() {
 
 
 
+### Network 없이 Network Request Test
+
+Network가 되지 않는 환경에서 Network Request를 알맞게 보내는지 테스트 할 수 있게끔 구현해봤다. 
+
+`Alamofire`에서 제공하는 `Session.default.request` 는 Network를 사용해야지만 가능한 method이다. network 없이 테스트를 하려면 먼저 똑같은 파라미터를 가지는  `request` method가 구현된 protocol을 따로 만들어 채택시키고  `SessionManager` 를 해당 프로토콜로 간접화 시켜줬다
+
+
+
+```swift
+//NetworkManager
+
+let sessionManager: SessionManagerProtocol
+
+init(sessionManager: SessionManagerProtocol = AF) {
+    self.sessionManager = sessionManager
+}
+
+...
+
+self?.sessionManager.request
+```
+
+```swift
+protocol SessionManagerProtocol {
+    func request(_ convertible: URLConvertible,
+                 method: HTTPMethod,
+                 parameters: Parameters?,
+                 encoding: ParameterEncoding,
+                 headers: HTTPHeaders?,
+                 interceptor: RequestInterceptor?,
+                 requestModifier: ((inout URLRequest) throws -> Void)?) -> DataRequest
+}
+
+extension Session: SessionManagerProtocol {
+    
+}
+```
+
+
+
+그리고 테스트에는 `SessionManagerProtocol` 을 채택하는 `SessionManagerStub` 을  만들고 `url` , `method` 가 올바르게 입력되는지 비교했다.
+
+```swift
+//RxMainNetworkTests
+
+
+class SessionManagerStub: SessionManagerProtocol {
+    var requestParameters: (url: URLConvertible, method: HTTPMethod)?
+    
+    func request(_ convertible: URLConvertible,
+                 method: HTTPMethod,
+                 parameters: Parameters?,
+                 encoding: ParameterEncoding,
+                 headers: HTTPHeaders?,
+                 interceptor: RequestInterceptor?,
+                 requestModifier: ((inout URLRequest) throws -> Void)?) -> DataRequest {
+      
+      ...
+      
+  func test_SidedishesFetch() {
+      networkManager.get(type: SidedishItem.self, endpoint: .main)
+          .subscribe(onNext: { _ in })
+          .disposed(by: DisposeBag())
+
+      let params = sessionManagerStub.requestParameters
+
+      XCTAssertEqual(try params?.url.asURL().absoluteString, "{해당 URL}")
+      XCTAssertEqual(params?.method, .get)
+  }
+```
+
+이렇게 하면 협업 시 올바르지 않은 요청을 테스트를 통해 감지할 수 있다.
+
+
+
+
+
 ### request 고민(main, soup, side)
 
 처음에 비동기식 데이터 스트림 프로그래밍이 익숙하지 않았을때는 `Observable<Observable<MainSection>>` 모양의 요상한 타입이 나오기도 했었다. 이렇게 생각하게 된 이유가 서버 요칭 시 `main`, `soup`, `side`를 따로 요청해야 하는데 결과를 받을 때 그 순서가 보장을 못 받을 것 같다는 우려가 있었다.
@@ -258,3 +336,5 @@ mainTableView.rx
 [Dish Icon](https://www.flaticon.com/authors/monkik)
 
 [iOS Memory Deep Dive](https://developer.apple.com/videos/play/wwdc2018/416/)
+
+[Let's TDD](https://www.youtube.com/watch?v=meTnd09Pf_M)
