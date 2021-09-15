@@ -31,6 +31,7 @@ class RxDetailViewModelTests: XCTestCase {
                                     sceneCoordinator: sceneCoordinator,
                                     sidedishUseCase: sidedishUseCase,
                                     detailHash: "H26C7")
+        super.setUp()
     }
     
     func test_detailFetch() {

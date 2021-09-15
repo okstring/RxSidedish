@@ -31,6 +31,7 @@ class RxMainViewModelTests: XCTestCase {
         viewModel = MainViewModel(title: "",
                                   sceneCoordinator: sceneCoordinator,
                                   sidedishUseCase: sidedishUseCase)
+        super.setUp()
     }
     
     func test_SidedishesFetch() {

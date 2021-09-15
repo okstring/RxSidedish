@@ -54,6 +54,7 @@ class RxMainNetworkTests: XCTestCase {
         sessionManagerStub = SessionManagerStub()
         networkManager = NetworkManager(sessionManager: sessionManagerStub)
         disposeBag = DisposeBag()
+        super.setUp()
     }
     
     func test_fetchSidedishes() {
