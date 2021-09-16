@@ -12,7 +12,7 @@ import RxBlocking
 
 import RxSwift
 
-class StubDelegate: RequestDelegate {
+class DummyRequestDelegate: RequestDelegate {
     var sessionConfiguration: URLSessionConfiguration = URLSessionConfiguration.default
     var startImmediately: Bool = false
     func cleanup(after request: Request) {
@@ -23,7 +23,7 @@ class StubDelegate: RequestDelegate {
     }
 }
 
-class SessionManagerStub: SessionManagerProtocol {
+class SessionManagerSpy: SessionManagerProtocol {
     var requestParameters: (url: URLConvertible, method: HTTPMethod)?
     
     func request(_ convertible: URLConvertible,
@@ -36,7 +36,7 @@ class SessionManagerStub: SessionManagerProtocol {
         
         self.requestParameters = (convertible, method)
         
-        let delegate = StubDelegate()
+        let delegate = DummyRequestDelegate()
         let request = URLRequest(url: URL(string: "https://www.google.com")!)
         
         return DataRequest.init(id: UUID(), convertible: request, underlyingQueue: DispatchQueue.global(), serializationQueue: DispatchQueue.main, eventMonitor: nil, interceptor: nil, delegate: delegate)
@@ -47,11 +47,11 @@ class SessionManagerStub: SessionManagerProtocol {
 
 class RxMainNetworkTests: XCTestCase {
     var networkManager: Networkable!
-    var sessionManagerStub: SessionManagerStub!
+    var sessionManagerStub: SessionManagerSpy!
     var disposeBag: DisposeBag!
     
     override func setUp() {
-        sessionManagerStub = SessionManagerStub()
+        sessionManagerStub = SessionManagerSpy()
         networkManager = NetworkManager(sessionManager: sessionManagerStub)
         disposeBag = DisposeBag()
         super.setUp()
