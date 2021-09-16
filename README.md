@@ -249,7 +249,7 @@ extension Session: SessionManagerProtocol {
 //RxMainNetworkTests
 
 
-class SessionManagerStub: SessionManagerProtocol {
+class SessionManagerSpy: SessionManagerProtocol {
     var requestParameters: (url: URLConvertible, method: HTTPMethod)?
     
     func request(_ convertible: URLConvertible,
