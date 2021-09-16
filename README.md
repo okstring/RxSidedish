@@ -207,7 +207,7 @@ func test_SidedishesFetch() {
 
 Network가 되지 않는 환경에서 Network Request를 알맞게 보내는지 테스트 할 수 있게끔 구현해봤다. 
 
-`Alamofire`에서 제공하는 `Session.default.request` 는 Network를 사용해야지만 가능한 method이다. network 없이 테스트를 하려면 먼저 똑같은 파라미터를 가지는  `request` method가 구현된 protocol을 따로 만들어 채택시키고  `SessionManager` 를 해당 프로토콜로 간접화 시켜줬다
+`Alamofire`에서 제공하는 `Session.default.request` 는 Network를 사용해야지만 가능한 method이다. network 없이 테스트를 하려면 먼저 똑같은 파라미터를 가지는  `request` method가 구현된 protocol을 따로 만들어 채택시키고  `SessionManager` 에 의존성주입을 시켜줬다.
 
 
 
@@ -243,7 +243,7 @@ extension Session: SessionManagerProtocol {
 
 
 
-그리고 테스트에는 `SessionManagerProtocol` 을 채택하는 `SessionManagerStub` 을  만들고 `url` , `method` 가 올바르게 입력되는지 비교했다.
+그리고 테스트에는 `SessionManagerProtocol` 을 채택하는 `SessionManagerSpy` 를  만들고 `url` , `method` 가 올바르게 입력되는지 비교했다.
 
 ```swift
 //RxMainNetworkTests
@@ -274,7 +274,7 @@ class SessionManagerSpy: SessionManagerProtocol {
     }
 ```
 
-이렇게 하면 협업 시 올바르지 않은 요청을 테스트를 통해 감지할 수 있다.
+이렇게 하면 협업 시 누군가 올바르지 않은 request를 방지할 수 있는 테스트를 짤 수 있다.
 
 
 
