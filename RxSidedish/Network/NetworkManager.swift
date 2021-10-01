@@ -41,6 +41,7 @@ final class NetworkManager: Networkable {
                             return emitter.onError(NetworkError.noResult)
                         }
                         emitter.onNext(result)
+                        emitter.onCompleted()
                     case 300..<400:
                         emitter.onError(NetworkError.redirection)
                     case 400..<500:
