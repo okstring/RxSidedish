@@ -27,6 +27,7 @@ final class ImageLoader {
                 let image = UIImage(contentsOfFile: cache)
                 
                 emitter.onNext(image)
+                emitter.onCompleted()
                 return Disposables.create()
             }
 
@@ -36,6 +37,7 @@ final class ImageLoader {
                     let image = UIImage(contentsOfFile: filePath)
 
                     emitter.onNext(image)
+                    emitter.onCompleted()
                 }
             }
             return Disposables.create()
